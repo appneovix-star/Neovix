@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neovix | Elevate Your Everyday</title>
+    <title>NEOVIX | Elevate Your Everyday</title>
     <style>
         * {
             margin: 0;
@@ -12,9 +12,9 @@
             font-family: 'Segoe UI', Roboto, sans-serif;
         }
 
-        /* Fondo nuevo: más claro, elegante y con textura muy sutil */
+        /* Fondo original que te gustó */
         body {
-            background: linear-gradient(135deg, #0f0f14 0%, #1a1a22 50%, #12121a 100%);
+            background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #0f3460 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -30,16 +30,15 @@
             text-align: center;
         }
 
-        /* Logo */
+        /* Logo cuadrado sin círculo */
         .logo {
-            width: 220px;
-            height: 220px;
-            margin: 0 auto 2rem;
-            background: #0a0a0f;
-            padding: 1.2rem;
-            border-radius: 50%;
-            border: 1px solid #2a2a38;
-            box-shadow: 0 0 30px rgba(255,255,255,0.08);
+            width: 260px;
+            height: 260px;
+            margin: 0 auto 2.5rem;
+            background: transparent;
+            border-radius: 0;
+            border: none;
+            box-shadow: none;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -51,15 +50,14 @@
             object-fit: contain;
         }
 
-        /* Texto marca */
         .marca {
             font-size: 2.4rem;
             font-weight: 700;
             letter-spacing: 6px;
-            margin-bottom: 0.7rem;
-            color: #ffffff;
+            margin-bottom: 0.8rem;
         }
 
+        /* Eslogan correcto */
         .eslogan {
             font-size: 1.1rem;
             color: #cccccc;
@@ -68,11 +66,10 @@
             text-transform: uppercase;
         }
 
-        /* Botones */
         .redes {
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
+            gap: 1.3rem;
             width: 100%;
         }
 
@@ -81,8 +78,8 @@
             align-items: center;
             justify-content: center;
             gap: 1rem;
-            padding: 1.2rem;
-            background: rgba(255,255,255,0.07);
+            padding: 1.3rem;
+            background: rgba(255,255,255,0.08);
             border: 1px solid rgba(255,255,255,0.15);
             border-radius: 8px;
             text-decoration: none;
@@ -91,45 +88,54 @@
             font-weight: 500;
             letter-spacing: 2px;
             transition: all 0.3s ease;
-            cursor: pointer;
         }
 
         .boton-red:hover {
-            background: rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.15);
             border-color: #ffffff;
             transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
 
         .icono {
-            font-size: 1.5rem;
+            font-size: 1.7rem;
+            line-height: 1;
+            display: flex;
+            align-items: center;
         }
 
         .pie {
             margin-top: 4rem;
             font-size: 0.85rem;
-            color: #777788;
+            color: #888888;
         }
     </style>
 </head>
 <body>
     <div class="contenedor">
         <div class="logo">
-            <img src="neovix.png" alt="Neovix">
+            <img src="neovix.png" alt="NEOVIX">
         </div>
 
         <h1 class="marca">NEOVIX</h1>
         <p class="eslogan">ELEVATE YOUR EVERYDAY</p>
 
-        <!-- Enlaces CORREGIDOS y funcionales -->
+        <!-- Redes: solo 1 botón de Instagram con el logo correcto -->
         <div class="redes">
             <a href="https://www.instagram.com/neovix.store/" target="_blank" class="boton-red">
-                <span class="icono">📷</span> INSTAGRAM
+                <span class="icono">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <circle cx="18" cy="6" r="1"></circle>
+                    </svg>
+                </span>
+                INSTAGRAM
             </a>
-            <a href="https://facebook.com/tu_pagina" target="_blank" class="boton-red">
+            <a href="https://facebook.com/" target="_blank" class="boton-red">
                 <span class="icono">f</span> FACEBOOK
             </a>
-            <a href="https://tiktok.com/@tu_cuenta" target="_blank" class="boton-red">
+            <a href="https://tiktok.com/" target="_blank" class="boton-red">
                 <span class="icono">♪</span> TIKTOK
             </a>
             <a href="https://wa.me/521234567890" target="_blank" class="boton-red">
@@ -138,7 +144,7 @@
         </div>
 
         <div class="pie">
-            © 2026 Neovix • Elevate Your Everyday
+            © 2026 NEOVIX • Elevate Your Everyday
         </div>
     </div>
 </body>
