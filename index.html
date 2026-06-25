@@ -36,17 +36,6 @@
             100% { box-shadow: 0 0 8px var(--azul-neon); }
         }
 
-        @keyframes linea-recorrida {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        @keyframes escaneo-vertical {
-            0% { transform: translateY(-100%); opacity: 0.1; }
-            50% { transform: translateY(100%); opacity: 0.2; }
-            100% { transform: translateY(-100%); opacity: 0.1; }
-        }
-
         /* --- MENÚ DE NAVEGACIÓN --- */
         nav {
             position: fixed;
@@ -77,17 +66,18 @@
 
         .menu {
             display: flex;
-            gap: 1.2rem;
+            gap: clamp(0.5rem, 2vw, 1.2rem);
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .menu a {
             color: var(--gris-claro);
             text-decoration: none;
-            font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+            font-size: clamp(0.75rem, 2.5vw, 0.95rem);
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 1px;
-            position: relative;
             transition: all 0.3s ease;
         }
 
@@ -96,22 +86,36 @@
             text-shadow: 0 0 10px rgba(0,229,255,0.5);
         }
 
-        .menu a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background: linear-gradient(90deg, transparent, var(--azul-neon), transparent);
-            transition: width 0.4s ease;
-        }
-
-        .menu a:hover::after {
+        /* --- SECCIÓN INICIO / PORTADA CORREGIDA --- */
+        #inicio {
+            min-height: 100vh;
             width: 100%;
+            background-color: #000000;
+            background-image: url("fondo-neovix.jpg");
+            background-size: contain; /* Ajusta la imagen completa sin cortar */
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: scroll; /* Funciona en todos los dispositivos */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
         }
 
-        /* --- SECCIONES GENERALES --- */
+        /* --- AJUSTE PARA PANTALLAS MUY GRANDES O MUY PEQUEÑAS --- */
+        @media (min-width: 1600px) {
+            #inicio {
+                background-size: 80% auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #inicio {
+                background-size: 95% auto;
+            }
+        }
+
+        /* --- RESTO DE SECCIONES --- */
         section {
             width: 100%;
             min-height: 100vh;
@@ -143,37 +147,6 @@
             transform: translateX(-50%);
         }
 
-        /* --- SECCIÓN INICIO (PORTADA) CORREGIDA --- */
-        #inicio {
-            background: url("fondo-neovix.jpg") no-repeat center center;
-            background-size: cover;
-            background-attachment: scroll; /* Cambiado para que funcione en todos los celulares */
-            background-position: center;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        #inicio::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(1, 3, 10, 0.6);
-        }
-
-        #inicio::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--azul-neon), transparent);
-            top: 0;
-            animation: escaneo-vertical 10s linear infinite;
-        }
-
-        /* --- SECCIÓN SOBRE NOSOTROS --- */
         #nosotros {
             background: linear-gradient(135deg, var(--negro-profundo) 0%, var(--gris-oscuro) 100%);
         }
@@ -181,35 +154,11 @@
         .contenedor-nosotros {
             max-width: 900px;
             margin: 0 auto;
-            position: relative;
             padding: clamp(1.5rem, 5vw, 2.5rem);
             border-radius: 16px;
             background: rgba(0, 229, 255, 0.02);
             border: 1px solid rgba(0, 229, 255, 0.12);
-            overflow: hidden;
             animation: aparecer 1.2s ease forwards;
-        }
-
-        .contenedor-nosotros::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--azul-neon), transparent);
-            animation: linea-recorrida 6s linear infinite;
-        }
-
-        .contenedor-nosotros::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--azul-neon), transparent);
-            animation: linea-recorrida 6s linear infinite reverse;
         }
 
         .contenido-nosotros {
@@ -217,11 +166,8 @@
             font-size: clamp(1rem, 3vw, 1.2rem);
             line-height: 1.8;
             text-align: center;
-            position: relative;
-            z-index: 2;
         }
 
-        /* --- SECCIÓN PRODUCTOS --- */
         #productos {
             background: linear-gradient(135deg, var(--gris-oscuro) 0%, #0c101a 100%);
         }
@@ -240,36 +186,20 @@
             padding: clamp(1.8rem, 5vw, 2.5rem) clamp(1.2rem, 4vw, 1.8rem);
             text-align: center;
             border: 1px solid rgba(0,229,255,0.1);
-            position: relative;
-            overflow: hidden;
             transition: all 0.5s ease;
             animation: aparecer 1s ease forwards;
         }
 
-        .tarjeta-categoria::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(45deg, transparent, rgba(0,229,255,0.06), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.7s ease;
-        }
-
         .tarjeta-categoria:hover {
-            transform: translateY(-8px) scale(1.02);
+            transform: translateY(-8px);
             border-color: rgba(0,229,255,0.3);
             box-shadow: 0 10px 25px rgba(0,229,255,0.15);
-        }
-
-        .tarjeta-categoria:hover::before {
-            transform: translateX(100%);
         }
 
         .tarjeta-categoria h3 {
             color: var(--azul-neon);
             margin: 1rem 0;
             font-size: clamp(1.2rem, 4vw, 1.5rem);
-            letter-spacing: 1.5px;
         }
 
         .tarjeta-categoria p {
@@ -299,7 +229,6 @@
             animation: brillo 2.5s infinite;
         }
 
-        /* --- SECCIÓN VENTAJAS --- */
         #garantia {
             background: linear-gradient(135deg, var(--negro-profundo) 0%, var(--gris-oscuro) 100%);
         }
@@ -325,7 +254,6 @@
         .ventaja:hover {
             transform: translateY(-6px);
             border-color: rgba(0,229,255,0.25);
-            box-shadow: 0 8px 20px rgba(0,229,255,0.1);
         }
 
         .ventaja h4 {
@@ -340,12 +268,13 @@
             font-size: clamp(0.9rem, 2.8vw, 1rem);
         }
 
-        /* --- SECCIÓN CONTACTO --- */
         #contacto {
-            background: url("fondo-redes.jpg") no-repeat center center;
+            background-color: #000;
+            background-image: url("fondo-redes.jpg");
             background-size: cover;
-            background-attachment: scroll; /* Corregido para móviles */
-            background-position: center;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
             position: relative;
             color: var(--blanco);
         }
@@ -354,7 +283,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(1,3,10,0.85) 0%, rgba(1,3,10,0.95) 100%);
+            background: rgba(1,3,10,0.85);
         }
 
         #contacto > * {
@@ -382,22 +311,14 @@
             text-decoration: none;
             color: var(--blanco);
             font-size: clamp(1rem, 3vw, 1.15rem);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
             transition: all 0.4s ease;
         }
 
         .boton-red:hover {
             background: rgba(0,229,255,0.13);
             border-color: var(--azul-neon);
-            transform: translateY(-4px);
-            box-shadow: 0 6px 18px rgba(0,229,255,0.2);
         }
 
-        /* --- PIE DE PÁGINA --- */
         footer {
             background: var(--negro-profundo);
             color: var(--gris-claro);
@@ -407,29 +328,15 @@
             border-top: 1px solid rgba(0,229,255,0.1);
         }
 
-        /* --- AJUSTES ESPECIALES PARA PANTALLAS PEQUEÑAS --- */
-        @media (max-width: 768px) {
-            .menu {
-                gap: 0.8rem;
-            }
-            .menu a {
-                font-size: 0.75rem;
-                letter-spacing: 0.5px;
-            }
-            section {
-                padding: 75px 4% 2.5rem;
-            }
-        }
-
+        /* --- Ajustes para menú en pantallas pequeñas --- */
         @media (max-width: 480px) {
             nav {
                 flex-direction: column;
                 gap: 0.6rem;
                 padding: 0.8rem 4%;
-                min-height: auto;
             }
             section {
-                padding-top: 100px;
+                padding-top: 95px;
             }
         }
     </style>
@@ -447,6 +354,7 @@
     </div>
 </nav>
 
+<!-- SOLO IMAGEN DE PORTADA -->
 <section id="inicio"></section>
 
 <section id="nosotros">
@@ -509,18 +417,10 @@
 <section id="contacto">
     <h2 class="titulo-seccion">Conéctate con Nosotros</h2>
     <div class="redes-lista">
-        <a href="https://www.instagram.com/neovix.store/" target="_blank" class="boton-red">
-            <span>📷</span> INSTAGRAM
-        </a>
-        <a href="https://www.facebook.com/share/1TzuZk1uhR/?mibextid=wwXIfr" target="_blank" class="boton-red">
-            <span>f</span> FACEBOOK
-        </a>
-        <a href="https://tiktok.com/@tu_cuenta" target="_blank" class="boton-red">
-            <span>♪</span> TIKTOK
-        </a>
-        <a href="https://wa.me/521XXXXXXXXXX" target="_blank" class="boton-red">
-            <span>💬</span> WHATSAPP
-        </a>
+        <a href="https://www.instagram.com/neovix.store/" target="_blank" class="boton-red">📷 INSTAGRAM</a>
+        <a href="https://www.facebook.com/share/1TzuZk1uhR/?mibextid=wwXIfr" target="_blank" class="boton-red">FACEBOOK</a>
+        <a href="https://tiktok.com/@tu_cuenta" target="_blank" class="boton-red">♪ TIKTOK</a>
+        <a href="https://wa.me/521XXXXXXXXXX" target="_blank" class="boton-red">💬 WHATSAPP</a>
     </div>
 </section>
 
