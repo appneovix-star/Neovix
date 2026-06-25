@@ -12,15 +12,15 @@
             font-family: 'Segoe UI', Roboto, sans-serif;
         }
 
-        /* Primera sección: solo fondo */
+        /* 🔹 PRIMERA SECCIÓN: Ocupa toda la pantalla, solo fondo */
         .seccion-1 {
             width: 100%;
-            min-height: 100vh;
+            height: 100vh; /* Altura exacta de la ventana */
             background: url("fondo-neovix.jpg") no-repeat center center;
             background-size: cover;
         }
 
-        /* Segunda sección: redes sociales */
+        /* 🔹 SEGUNDA SECCIÓN: Redes sociales, otra pantalla completa */
         .seccion-2 {
             width: 100%;
             min-height: 100vh;
@@ -34,14 +34,14 @@
             position: relative;
         }
 
-        /* Capa para leer bien el texto */
+        /* Capa oscura para que se lea bien el texto */
         .capa-sombra {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.35);
             z-index: 1;
         }
 
@@ -100,10 +100,10 @@
     </style>
 </head>
 <body>
-    <!-- Primera parte: solo fondo -->
+    <!-- ✅ Primera parte: pantalla completa solo con el primer fondo -->
     <div class="seccion-1"></div>
 
-    <!-- Segunda parte: redes sociales -->
+    <!-- ✅ Segunda parte: al bajar, aparece el segundo fondo con las redes -->
     <div class="seccion-2">
         <div class="capa-sombra"></div>
         <div class="contenedor-redes">
