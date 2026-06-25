@@ -12,9 +12,11 @@
             font-family: 'Segoe UI', Roboto, sans-serif;
         }
 
-        /* Fondo original que te gustó */
+        /* Fondo con la imagen nueva */
         body {
-            background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #0f3460 100%);
+            /* Ruta de tu imagen */
+            background: url("fondo-neovix.jpg") no-repeat center center fixed;
+            background-size: cover; /* Que cubra toda la pantalla */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -24,10 +26,23 @@
             color: #ffffff;
         }
 
+        /* Capa semitransparente para que se lea bien el texto */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: 1;
+        }
+
         .contenedor {
             width: 100%;
             max-width: 550px;
             text-align: center;
+            position: relative;
+            z-index: 2; /* Para que quede encima del fondo */
         }
 
         /* Logo cuadrado sin círculo */
@@ -57,7 +72,6 @@
             margin-bottom: 0.8rem;
         }
 
-        /* Eslogan correcto */
         .eslogan {
             font-size: 1.1rem;
             color: #cccccc;
@@ -79,8 +93,8 @@
             justify-content: center;
             gap: 1rem;
             padding: 1.3rem;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
             border-radius: 8px;
             text-decoration: none;
             color: #ffffff;
@@ -88,13 +102,14 @@
             font-weight: 500;
             letter-spacing: 2px;
             transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
         }
 
         .boton-red:hover {
-            background: rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.18);
             border-color: #ffffff;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
         }
 
         .icono {
@@ -107,11 +122,13 @@
         .pie {
             margin-top: 4rem;
             font-size: 0.85rem;
-            color: #888888;
+            color: #aaaaaa;
         }
     </style>
 </head>
 <body>
+    <div class="overlay"></div>
+
     <div class="contenedor">
         <div class="logo">
             <img src="neovix.png" alt="NEOVIX">
@@ -120,7 +137,6 @@
         <h1 class="marca">NEOVIX</h1>
         <p class="eslogan">ELEVATE YOUR EVERYDAY</p>
 
-        <!-- Redes: solo 1 botón de Instagram con el logo correcto -->
         <div class="redes">
             <a href="https://www.instagram.com/neovix.store/" target="_blank" class="boton-red">
                 <span class="icono">
