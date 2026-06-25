@@ -1,119 +1,145 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NEOVIX | Elevate Your Everyday</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neovix | Elevate Your Everyday</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+        /* Fondo nuevo: más claro, elegante y con textura muy sutil */
+        body {
+            background: linear-gradient(135deg, #0f0f14 0%, #1a1a22 50%, #12121a 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 5%;
+            color: #ffffff;
+        }
 
-<link rel="stylesheet" href="style.css">
+        .contenedor {
+            width: 100%;
+            max-width: 550px;
+            text-align: center;
+        }
+
+        /* Logo */
+        .logo {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 2rem;
+            background: #0a0a0f;
+            padding: 1.2rem;
+            border-radius: 50%;
+            border: 1px solid #2a2a38;
+            box-shadow: 0 0 30px rgba(255,255,255,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Texto marca */
+        .marca {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: 6px;
+            margin-bottom: 0.7rem;
+            color: #ffffff;
+        }
+
+        .eslogan {
+            font-size: 1.1rem;
+            color: #cccccc;
+            letter-spacing: 4px;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+        }
+
+        /* Botones */
+        .redes {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            width: 100%;
+        }
+
+        .boton-red {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1.2rem;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1.15rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .boton-red:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+        }
+
+        .icono {
+            font-size: 1.5rem;
+        }
+
+        .pie {
+            margin-top: 4rem;
+            font-size: 0.85rem;
+            color: #777788;
+        }
+    </style>
 </head>
-
 <body>
-
-<header>
-    <div class="logo">
-        <h1>NEOVIX</h1>
-        <p>ELEVATE YOUR EVERYDAY</p>
-    </div>
-
-    <nav>
-        <a href="#inicio">Inicio</a>
-        <a href="#productos">Productos</a>
-        <a href="#nosotros">Nosotros</a>
-        <a href="#contacto">Contacto</a>
-    </nav>
-</header>
-
-<section id="inicio" class="hero">
-
-    <div class="hero-content">
-        <h2>Tecnología y estilo para tu día a día</h2>
-
-        <p>
-            Descubre productos innovadores seleccionados para elevar tu experiencia.
-        </p>
-
-        <a href="#productos" class="btn">
-            Ver productos
-        </a>
-    </div>
-
-</section>
-
-<section id="productos">
-
-    <h2 class="section-title">Productos Destacados</h2>
-
-    <div class="products">
-
-        <div class="card">
-            <h3>Audífonos Bluetooth</h3>
-            <p>Sonido premium y diseño moderno.</p>
-            <button>Comprar</button>
+    <div class="contenedor">
+        <div class="logo">
+            <img src="neovix.png" alt="Neovix">
         </div>
 
-        <div class="card">
-            <h3>Smartwatch</h3>
-            <p>Monitorea tu actividad y mantente conectado.</p>
-            <button>Comprar</button>
+        <h1 class="marca">NEOVIX</h1>
+        <p class="eslogan">ELEVATE YOUR EVERYDAY</p>
+
+        <!-- Enlaces CORREGIDOS y funcionales -->
+        <div class="redes">
+            <a href="https://www.instagram.com/neovix.store/" target="_blank" class="boton-red">
+                <span class="icono">📷</span> INSTAGRAM
+            </a>
+            <a href="https://facebook.com/tu_pagina" target="_blank" class="boton-red">
+                <span class="icono">f</span> FACEBOOK
+            </a>
+            <a href="https://tiktok.com/@tu_cuenta" target="_blank" class="boton-red">
+                <span class="icono">♪</span> TIKTOK
+            </a>
+            <a href="https://wa.me/521234567890" target="_blank" class="boton-red">
+                <span class="icono">💬</span> WHATSAPP
+            </a>
         </div>
 
-        <div class="card">
-            <h3>Accesorios Tech</h3>
-            <p>Los gadgets que complementan tu estilo.</p>
-            <button>Comprar</button>
+        <div class="pie">
+            © 2026 Neovix • Elevate Your Everyday
         </div>
-
     </div>
-
-</section>
-
-<section id="nosotros">
-
-    <h2 class="section-title">Sobre NEOVIX</h2>
-
-    <p class="about">
-        NEOVIX es una marca enfocada en productos modernos,
-        funcionales y elegantes para quienes buscan calidad,
-        innovación y estilo en cada detalle.
-    </p>
-
-</section>
-
-<section class="benefits">
-
-    <div>
-        <h3>🚚 Envíos</h3>
-        <p>A todo México.</p>
-    </div>
-
-    <div>
-        <h3>🔒 Pagos Seguros</h3>
-        <p>Protección en cada compra.</p>
-    </div>
-
-    <div>
-        <h3>⭐ Calidad</h3>
-        <p>Productos seleccionados.</p>
-    </div>
-
-</section>
-
-<section id="contacto">
-
-    <h2 class="section-title">Contacto</h2>
-
-    <p>WhatsApp: +52 TU-NUMERO</p>
-    <p>Email: contacto@neovix.store</p>
-
-</section>
-
-<footer>
-    © 2026 NEOVIX. Todos los derechos reservados.
-</footer>
-
 </body>
 </html>
