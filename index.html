@@ -12,19 +12,33 @@
             font-family: 'Segoe UI', Roboto, sans-serif;
         }
 
-        body {
-            background: url("fondo-neovix.jpg") no-repeat center center fixed;
-            background-size: cover;
+        /* Primera sección: pantalla completa solo con fondo original */
+        .seccion-1 {
+            width: 100%;
             min-height: 100vh;
+            background: url("fondo-neovix.jpg") no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        /* Segunda sección: redes con el nuevo fondo */
+        .seccion-2 {
+            width: 100%;
+            min-height: 100vh;
+            background: url("fondo-redes.jpg") no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 2rem 5%;
             color: #ffffff;
+            position: relative;
         }
 
+        /* Capa para que se lea bien el texto */
         .capa-sombra {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -33,7 +47,7 @@
             z-index: 1;
         }
 
-        .contenedor {
+        .contenedor-redes {
             width: 100%;
             max-width: 550px;
             text-align: center;
@@ -88,33 +102,37 @@
     </style>
 </head>
 <body>
-    <div class="capa-sombra"></div>
+    <!-- Primera parte: solo fondo -->
+    <div class="seccion-1"></div>
 
-    <div class="contenedor">
-        <div class="redes">
-            <a href="https://www.instagram.com/neovix.store/" target="_blank" class="boton-red">
-                <span class="icono">
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                        <circle cx="12" cy="12" r="4"></circle>
-                        <circle cx="18" cy="6" r="1"></circle>
-                    </svg>
-                </span>
-                INSTAGRAM
-            </a>
-            <a href="https://www.facebook.com/share/1TzuZk1uhR/?mibextid=wwXIfr" target="_blank" class="boton-red">
-                <span class="icono">f</span> FACEBOOK
-            </a>
-            <a href="https://tiktok.com/@tu_cuenta" target="_blank" class="boton-red">
-                <span class="icono">♪</span> TIKTOK
-            </a>
-            <a href="https://wa.me/521234567890" target="_blank" class="boton-red">
-                <span class="icono">💬</span> WHATSAPP
-            </a>
-        </div>
-
-        <div class="pie">
-            © 2026 NEOVIX
+    <!-- Segunda parte: redes sociales -->
+    <div class="seccion-2">
+        <div class="capa-sombra"></div>
+        <div class="contenedor-redes">
+            <div class="redes">
+                <a href="https://www.instagram.com/neovix.store/" target="_blank" class="boton-red">
+                    <span class="icono">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <circle cx="12" cy="12" r="4"></circle>
+                            <circle cx="18" cy="6" r="1"></circle>
+                        </svg>
+                    </span>
+                    INSTAGRAM
+                </a>
+                <a href="https://www.facebook.com/share/1TzuZk1uhR/?mibextid=wwXIfr" target="_blank" class="boton-red">
+                    <span class="icono">f</span> FACEBOOK
+                </a>
+                <a href="https://tiktok.com/@tu_cuenta" target="_blank" class="boton-red">
+                    <span class="icono">♪</span> TIKTOK
+                </a>
+                <a href="https://wa.me/521234567890" target="_blank" class="boton-red">
+                    <span class="icono">💬</span> WHATSAPP
+                </a>
+            </div>
+            <div class="pie">
+                © 2026 NEOVIX
+            </div>
         </div>
     </div>
 </body>
