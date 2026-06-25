@@ -14,9 +14,10 @@
         }
 
         :root {
-            --negro-profundo: #01030a;
-            --gris-oscuro: #080b14;
-            --gris-medio: #121826;
+            --negro-profundo: #000000;
+            --negro-suave: #050508;
+            --gris-oscuro: #0f141f; /* Gris oscuro para botones */
+            --gris-medio: #1a2130;
             --gris-claro: #b4bcd0;
             --blanco: #ffffff;
             --azul-neon: #00e5ff;
@@ -39,6 +40,11 @@
         @keyframes linea-recorrida {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
+        }
+
+        @keyframes linea-recorrida-vertical {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
         }
 
         @keyframes escaneo-vertical {
@@ -143,11 +149,11 @@
             transform: translateX(-50%);
         }
 
-        /* --- SECCIÓN INICIO (PORTADA) CORREGIDA --- */
+        /* --- SECCIÓN INICIO (PORTADA) --- */
         #inicio {
             background: url("fondo-neovix.jpg") no-repeat center center;
             background-size: cover;
-            background-attachment: scroll; /* Cambiado para que funcione en todos los celulares */
+            background-attachment: scroll;
             background-position: center;
             min-height: 100vh;
             display: flex;
@@ -175,7 +181,7 @@
 
         /* --- SECCIÓN SOBRE NOSOTROS --- */
         #nosotros {
-            background: linear-gradient(135deg, var(--negro-profundo) 0%, var(--gris-oscuro) 100%);
+            background: linear-gradient(135deg, var(--negro-profundo) 0%, var(--negro-suave) 100%);
         }
 
         .contenedor-nosotros {
@@ -221,7 +227,7 @@
             z-index: 2;
         }
 
-        /* --- SECCIÓN PRODUCTOS --- */
+        /* --- SECCIÓN PRODUCTOS - CORREGIDA --- */
         #productos {
             background: linear-gradient(135deg, var(--gris-oscuro) 0%, #0c101a 100%);
         }
@@ -234,8 +240,9 @@
             margin: 0 auto;
         }
 
+        /* Tarjetas: color original + contorno animado */
         .tarjeta-categoria {
-            background: linear-gradient(145deg, var(--gris-medio), #1a2130);
+            background: linear-gradient(145deg, var(--gris-medio), #1a2130); /* Volvemos al color original */
             border-radius: 16px;
             padding: clamp(1.8rem, 5vw, 2.5rem) clamp(1.2rem, 4vw, 1.8rem);
             text-align: center;
@@ -246,23 +253,53 @@
             animation: aparecer 1s ease forwards;
         }
 
+        /* Contorno animado completo */
         .tarjeta-categoria::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: linear-gradient(45deg, transparent, rgba(0,229,255,0.06), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.7s ease;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--azul-neon), transparent);
+            animation: linea-recorrida 5s linear infinite;
+        }
+
+        .tarjeta-categoria::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--azul-neon), transparent);
+            animation: linea-recorrida 5s linear infinite reverse;
+        }
+
+        .tarjeta-categoria .lado-izq {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, var(--azul-neon), transparent);
+            animation: linea-recorrida-vertical 7s linear infinite;
+        }
+
+        .tarjeta-categoria .lado-der {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, var(--azul-neon), transparent);
+            animation: linea-recorrida-vertical 7s linear infinite reverse;
         }
 
         .tarjeta-categoria:hover {
             transform: translateY(-8px) scale(1.02);
             border-color: rgba(0,229,255,0.3);
             box-shadow: 0 10px 25px rgba(0,229,255,0.15);
-        }
-
-        .tarjeta-categoria:hover::before {
-            transform: translateX(100%);
         }
 
         .tarjeta-categoria h3 {
@@ -279,29 +316,57 @@
             font-size: clamp(0.9rem, 2.8vw, 1rem);
         }
 
+        /* Botones: fondo gris oscuro + contorno + animación */
         .btn {
             display: inline-block;
             padding: 0.8rem 1.6rem;
-            background: linear-gradient(90deg, var(--azul-intenso), var(--azul-neon));
+            background: var(--gris-oscuro); /* Gris oscuro elegante */
             color: var(--blanco);
             text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
             transition: all 0.4s ease;
             font-size: clamp(0.9rem, 2.8vw, 1rem);
+            border: 1px solid rgba(0,229,255,0.2);
+        }
+
+        /* Contorno animado para botones */
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--azul-neon), transparent);
+            animation: linea-recorrida 4s linear infinite;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--azul-neon), transparent);
+            animation: linea-recorrida 4s linear infinite reverse;
         }
 
         .btn:hover {
             transform: scale(1.05);
             box-shadow: var(--sombra-fuerte);
+            border-color: var(--azul-neon);
             animation: brillo 2.5s infinite;
         }
 
         /* --- SECCIÓN VENTAJAS --- */
         #garantia {
-            background: linear-gradient(135deg, var(--negro-profundo) 0%, var(--gris-oscuro) 100%);
+            background: linear-gradient(135deg, var(--negro-profundo) 0%, var(--negro-suave) 100%);
         }
 
         .grid-ventajas {
@@ -316,10 +381,23 @@
             padding: clamp(1.5rem, 4vw, 2rem);
             text-align: center;
             border-radius: 14px;
-            background: rgba(0,229,255,0.02);
+            background: linear-gradient(145deg, var(--gris-medio), #1a2130);
             border: 1px solid rgba(0,229,255,0.08);
             transition: all 0.4s ease;
             animation: aparecer 1s ease forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ventaja::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--azul-neon), transparent);
+            animation: linea-recorrida 8s linear infinite;
         }
 
         .ventaja:hover {
@@ -344,7 +422,7 @@
         #contacto {
             background: url("fondo-redes.jpg") no-repeat center center;
             background-size: cover;
-            background-attachment: scroll; /* Corregido para móviles */
+            background-attachment: scroll;
             background-position: center;
             position: relative;
             color: var(--blanco);
@@ -388,6 +466,19 @@
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .boton-red::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--azul-neon), transparent);
+            animation: linea-recorrida 6s linear infinite;
         }
 
         .boton-red:hover {
@@ -462,21 +553,29 @@
     <h2 class="titulo-seccion">Nuestros Productos</h2>
     <div class="grid-categorias">
         <div class="tarjeta-categoria">
+            <span class="lado-izq"></span>
+            <span class="lado-der"></span>
             <h3>📱 iPhones</h3>
             <p>Modelos nuevos y seminuevos, revisados técnicamente, con garantía real y funcionamiento impecable.</p>
             <a href="catalogo.html#iphones" class="btn">Ver modelos</a>
         </div>
         <div class="tarjeta-categoria">
+            <span class="lado-izq"></span>
+            <span class="lado-der"></span>
             <h3>🎧 AirPods</h3>
             <p>Sonido nítido, conectividad estable y batería de larga duración para disfrutar tu música sin interrupciones.</p>
             <a href="catalogo.html#airpods" class="btn">Ver opciones</a>
         </div>
         <div class="tarjeta-categoria">
+            <span class="lado-izq"></span>
+            <span class="lado-der"></span>
             <h3>⚡ Accesorios</h3>
             <p>Cargadores, fundas, micas, cables y más para proteger, mejorar y complementar tu equipo tecnológico.</p>
             <a href="catalogo.html#accesorios" class="btn">Ver catálogo</a>
         </div>
         <div class="tarjeta-categoria">
+            <span class="lado-izq"></span>
+            <span class="lado-der"></span>
             <h3>👕 Camisas</h3>
             <p>Diseños exclusivos, telas de primera calidad y tallas variadas para combinar tecnología con tu estilo personal.</p>
             <a href="catalogo.html#camisas" class="btn">Ver diseños</a>
