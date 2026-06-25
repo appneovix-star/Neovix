@@ -13,19 +13,21 @@
             scroll-behavior: smooth;
         }
 
-        /* 🎨 PALETA: NEGRO + ROJO */
+        /* 🎨 PALETA: NEGRO + ROJO + GRIS */
         :root {
-            --negro-base: #000000;          /* Negro más profundo */
-            --negro-suave: #0a0000;         /* Negro con matiz rojo sutil */
-            --gris-oscuro-fondo: #120000;   /* Fondo general de secciones */
-            --gris-medio-tarjetas: #1a0505; /* Fondo de tarjetas */
-            --gris-botones: #220808;        /* Fondo de botones */
-            --gris-claro-texto: #d0d0d0;    /* Texto secundario */
-            --blanco: #ffffff;              /* Texto blanco puro */
-            --rojo-neon: #ff2222;           /* Rojo brillante principal */
-            --rojo-intenso: #cc0000;        /* Rojo más oscuro */
+            --negro-base: #000000;
+            --negro-suave: #0a0000;
+            --gris-oscuro-fondo: #120000;
+            --gris-medio-tarjetas: #1a0505;
+            --gris-botones: #220808;
+            --gris-claro-texto: #d0d0d0;
+            --gris-borde: #444444;
+            --gris-resaltado: #666666;
+            --blanco: #ffffff;
+            --rojo-neon: #ff2222;
+            --rojo-intenso: #cc0000;
             --sombra-luz: 0 0 20px rgba(255, 34, 34, 0.25);
-            --sombra-fuerte: 0 0 35px rgba(255, 34, 34, 0.4);
+            --sombra-gris: 0 0 15px rgba(100, 100, 100, 0.2);
         }
 
         @keyframes aparecer {
@@ -152,7 +154,7 @@
             transform: translateX(-50%);
         }
 
-        /* --- SECCIÓN INICIO (PORTADA) --- */
+        /* --- SECCIÓN INICIO --- */
         #inicio {
             background: var(--negro-base) url("fondo-neovix.jpg") no-repeat center center;
             background-size: cover;
@@ -182,7 +184,7 @@
             animation: escaneo-vertical 10s linear infinite;
         }
 
-        /* --- SECCIÓN SOBRE NOSOTROS --- */
+        /* --- SECCIÓN NOSOTROS --- */
         #nosotros {
             background: linear-gradient(180deg, var(--gris-oscuro-fondo) 0%, var(--negro-suave) 100%);
         }
@@ -243,7 +245,6 @@
             margin: 0 auto;
         }
 
-        /* Tarjetas */
         .tarjeta-categoria {
             background: var(--gris-medio-tarjetas);
             border-radius: 16px;
@@ -256,7 +257,6 @@
             animation: aparecer 1s ease forwards;
         }
 
-        /* Contornos animados */
         .tarjeta-categoria::before {
             content: '';
             position: absolute;
@@ -305,7 +305,6 @@
             box-shadow: var(--sombra-luz);
         }
 
-        /* ✅ TÍTULOS DE PRODUCTOS EN BLANCO */
         .tarjeta-categoria h3 {
             color: var(--blanco);
             margin: 1rem 0;
@@ -320,7 +319,6 @@
             font-size: clamp(0.9rem, 2.8vw, 1rem);
         }
 
-        /* Botones */
         .btn {
             display: inline-block;
             padding: 0.8rem 1.6rem;
@@ -367,21 +365,21 @@
             animation: brillo 2.5s infinite;
         }
 
-        /* --- SECCIÓN GARANTÍA / SEGURIDAD --- */
+        /* --- SECCIÓN ¿POR QUÉ ELEGIRNOS? --- */
         #garantia {
             background: linear-gradient(180deg, var(--gris-oscuro-fondo) 0%, var(--negro-suave) 100%);
         }
 
         .grid-ventajas {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: clamp(1.2rem, 3vw, 2rem);
-            max-width: 1050px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: clamp(1.5rem, 4vw, 2.5rem);
+            max-width: 900px;
             margin: 0 auto;
         }
 
         .ventaja {
-            padding: clamp(1.5rem, 4vw, 2rem);
+            padding: clamp(1.8rem, 5vw, 2.2rem);
             text-align: center;
             border-radius: 14px;
             background: var(--gris-medio-tarjetas);
@@ -409,16 +407,15 @@
             box-shadow: var(--sombra-luz);
         }
 
-        /* ✅ TÍTULOS DE VENTAJAS EN BLANCO */
         .ventaja h4 {
             color: var(--blanco);
             font-size: clamp(1.1rem, 3.5vw, 1.3rem);
-            margin: 1rem 0 0.6rem;
+            margin: 0 0 0.8rem 0;
         }
 
         .ventaja p {
             color: var(--gris-claro-texto);
-            line-height: 1.6;
+            line-height: 1.7;
             font-size: clamp(0.9rem, 2.8vw, 1rem);
         }
 
@@ -447,7 +444,7 @@
         .redes-lista {
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
+            gap: 1.5rem;
             max-width: 500px;
             margin: 0 auto;
         }
@@ -457,9 +454,9 @@
             align-items: center;
             justify-content: center;
             gap: 1rem;
-            padding: clamp(1rem, 3vw, 1.3rem);
-            background: var(--gris-medio-tarjetas);
-            border: 1px solid rgba(255,34,34,0.15);
+            padding: clamp(1.1rem, 3vw, 1.4rem);
+            background: #181818;
+            border: 1px solid var(--gris-borde);
             border-radius: 10px;
             text-decoration: none;
             color: var(--blanco);
@@ -481,15 +478,23 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background: linear-gradient(90deg, transparent, var(--rojo-neon), transparent);
+            background: linear-gradient(90deg, transparent, var(--gris-resaltado), transparent);
             animation: linea-recorrida 6s linear infinite;
         }
 
         .boton-red:hover {
-            background: var(--gris-botones);
-            border-color: var(--rojo-neon);
+            background: #222222;
+            border-color: var(--gris-resaltado);
             transform: translateY(-4px);
-            box-shadow: var(--sombra-luz);
+            box-shadow: var(--sombra-gris);
+        }
+
+        /* ✅ ESTILO PARA LOS ICONOS */
+        .icono-red {
+            width: 28px;
+            height: 28px;
+            display: inline-block;
+            vertical-align: middle;
         }
 
         /* --- PIE DE PÁGINA --- */
@@ -502,7 +507,7 @@
             border-top: 1px solid rgba(255,34,34,0.1);
         }
 
-        /* --- AJUSTES PARA MÓVILES --- */
+        /* --- AJUSTES PARA PANTALLAS PEQUEÑAS --- */
         @media (max-width: 768px) {
             .menu {
                 gap: 0.8rem;
@@ -513,6 +518,9 @@
             }
             section {
                 padding: 75px 4% 2.5rem;
+            }
+            .grid-ventajas {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -591,19 +599,19 @@
     <h2 class="titulo-seccion">¿Por qué elegirnos?</h2>
     <div class="grid-ventajas">
         <div class="ventaja">
-            <h4>✅ Garantía Completa</h4>
+            <h4>Garantía Completa</h4>
             <p>Todos nuestros equipos cuentan con garantía escrita y comprobable, sin letras pequeñas.</p>
         </div>
         <div class="ventaja">
-            <h4>🔒 Compra Segura</h4>
+            <h4>Compra Segura</h4>
             <p>Transparencia total en precios, condiciones claras y atención personalizada en cada consulta.</p>
         </div>
         <div class="ventaja">
-            <h4>🚚 Envíos Rápidos</h4>
+            <h4>Envíos Rápidos</h4>
             <p>Entregamos en toda la República Mexicana con seguimiento para que sepas dónde está tu pedido.</p>
         </div>
         <div class="ventaja">
-            <h4>💬 Atención Especializada</h4>
+            <h4>Atención Especializada</h4>
             <p>Te asesoramos para que elijas justo lo que necesitas, respondiendo tus dudas al instante.</p>
         </div>
     </div>
@@ -613,16 +621,22 @@
     <h2 class="titulo-seccion">Conéctate con Nosotros</h2>
     <div class="redes-lista">
         <a href="https://www.instagram.com/neovix.store/" target="_blank" class="boton-red">
-            <span>📷</span> INSTAGRAM
+            <svg class="icono-red" viewBox="0 0 24 24" fill="white">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+            INSTAGRAM
         </a>
         <a href="https://www.facebook.com/share/1TzuZk1uhR/?mibextid=wwXIfr" target="_blank" class="boton-red">
-            <span>f</span> FACEBOOK
-        </a>
-        <a href="https://tiktok.com/@tu_cuenta" target="_blank" class="boton-red">
-            <span>♪</span> TIKTOK
+            <svg class="icono-red" viewBox="0 0 24 24" fill="white">
+                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692h1.971v3z"/>
+            </svg>
+            FACEBOOK
         </a>
         <a href="https://wa.me/521XXXXXXXXXX" target="_blank" class="boton-red">
-            <span>💬</span> WHATSAPP
+            <svg class="icono-red" viewBox="0 0 24 24" fill="white">
+                <path d="M12 0C5.374 0 0 5.373 0 12c0 2.136.566 4.138 1.556 5.861L.05 23.523a.5.5 0 0 0 .527.627l5.663-.978A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm4.89 17.11c-.208.583-1.035 1.066-1.694 1.213-.452.1-1.042.18-3.022-.647-2.537-1.05-4.167-3.57-4.293-3.74-.126-.17-1.023-1.36-1.023-2.592 0-1.233.646-1.835.874-2.082.228-.247.496-.309.662-.309.166 0 .332 0 .478.005.174.007.368-.08.574.437.208.52.706 1.796.768 1.927.062.13.104.282.02.452-.084.17-.126.282-.252.437-.126.154-.26.345-.378.464-.126.125-.258.26-.11.509.148.248.654 1.078 1.408 1.747.968.853 1.782 1.117 2.03 1.242.248.125.392.105.538-.063.146-.167.627-.732.794-.98.166-.247.332-.207.56-.125.228.082 1.45.682 1.703.807.252.125.419.187.481.292.062.104.062.606-.146 1.189z"/>
+            </svg>
+            WHATSAPP
         </a>
     </div>
 </section>
