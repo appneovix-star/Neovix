@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo | NEOVIX</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, 'Orbitron', sans-serif;
+        }
+
+        :root {
+            --negro-base: #000000;
+            --negro-suave: #0a0000;
+            --gris-oscuro-fondo: #120000;
+            --gris-medio-tarjetas: #1a0505;
+            --gris-borde: #444444;
+            --blanco: #ffffff;
+            --rojo-neon: #ff2222;
+            --rojo-intenso: #cc0000;
+        }
+
+        body {
+            background: var(--gris-oscuro-fondo);
+            color: var(--blanco);
+            padding: 85px 4% 3rem;
+        }
+
+        .boton-volver {
+            display: inline-block;
+            margin-bottom: 2.5rem;
+            color: var(--blanco);
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border: 1px solid var(--gris-borde);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .boton-volver:hover {
+            border-color: var(--rojo-neon);
+            color: var(--rojo-neon);
+            transform: translateX(-3px);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--rojo-neon), transparent);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .categoria {
+            margin-bottom: 4rem;
+        }
+
+        .categoria h2 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: var(--blanco);
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255,34,34,0.2);
+        }
+
+        .grid-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tarjeta-producto {
+            background: var(--gris-medio-tarjetas);
+            border: 1px solid rgba(255,34,34,0.1);
+            border-radius: 14px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .tarjeta-producto:hover {
+            transform: translateY(-8px);
+            border-color: var(--rojo-neon);
+            box-shadow: 0 0 20px rgba(255,34,34,0.2);
+        }
+
+        .tarjeta-producto img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.2rem;
+            background: #000;
+        }
+
+        .tarjeta-producto h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--blanco);
+        }
+
+        .tarjeta-producto p {
+            color: #d0d0d0;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .precio {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--rojo-neon);
+            margin-bottom: 1.2rem;
+            display: block;
+        }
+
+        .btn-whatsapp {
+            display: inline-block;
+            padding: 0.8rem 1.4rem;
+            background: #25d366;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-whatsapp:hover {
+            background: #1ebe5d;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="boton-volver">← Volver al inicio</a>
+
+    <h1>Catálogo de Productos</h1>
+
+    <div class="categoria" id="iphones">
+        <h2>iPhones</h2>
+        <div class="grid-productos">
+            <div class="tarjeta-producto">
+                <img src="iphone14.jpg" alt="iPhone 14">
+                <h3>iPhone 14</h3>
+                <p>128GB | Batería 90% | Liberado | Garantía</p>
+                <span class="precio">$8,990 MXN</span>
+                <a href="https://wa.me/521XXXXXXXXXX?text=Hola,%20me%20interesa%20el%20iPhone%2014" target="_blank" class="btn-whatsapp">Consultar</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="categoria" id="airpods">
+        <h2>AirPods</h2>
+        <div class="grid-productos">
+            <div class="tarjeta-producto">
+                <img src="airpods-pro2.jpg" alt="AirPods Pro 2da Gen">
+                <h3>AirPods Pro 2da Generación</h3>
+                <p>Cancelación de ruido | Sonido espacial | Estuche MagSafe</p>
+                <span class="precio">$3,490 MXN</span>
+                <a href="https://wa.me/521XXXXXXXXXX?text=Hola,%20me%20interesan%20los%20AirPods%20Pro" target="_blank" class="btn-whatsapp">Consultar</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="categoria" id="accesorios">
+        <h2>Accesorios</h2>
+        <div class="grid-productos">
+            <div class="tarjeta-producto">
+                <img src="cargador20w.jpg" alt="Cargador 20W">
+                <h3>Cargador 20W Original</h3>
+                <p>Carga rápida | Compatible con todos los modelos iPhone</p>
+                <span class="precio">$599 MXN</span>
+                <a href="https://wa.me/521XXXXXXXXXX?text=Hola,%20me%20interesa%20el%20cargador" target="_blank" class="btn-whatsapp">Consultar</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="categoria" id="camisas">
+        <h2>Camisas</h2>
+        <div class="grid-productos">
+            <div class="tarjeta-producto">
+                <img src="camisa-neovix.jpg" alt="Camisa Neovix">
+                <h3>Camisa Estilo Neovix</h3>
+                <p>Tela de algodón | Tallas: M, L, XL | Diseño exclusivo</p>
+                <span class="precio">$450 MXN</span>
+                <a href="https://wa.me/521XXXXXXXXXX?text=Hola,%20me%20interesa%20la%20camisa" target="_blank" class="btn-whatsapp">Consultar</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
