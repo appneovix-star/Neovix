@@ -14,7 +14,6 @@
 
         :root {
             --blanco: #ffffff;
-            --fondo: #fbfbfd;
             --gris-suave: #f5f5f7;
             --gris-borde: #d2d2d7;
             --gris-texto: #1d1d1f;
@@ -32,7 +31,6 @@
 
         body {
             line-height: 1.47;
-            font-weight: 400;
         }
 
         /* --- Barra de Navegación --- */
@@ -42,8 +40,7 @@
             left: 0;
             width: 100%;
             background: rgba(255,255,255,0.8);
-            backdrop-filter: saturate(180%) blur(20px);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(0,0,0,0.12);
             z-index: 999;
         }
@@ -61,7 +58,6 @@
         .logo {
             font-size: 19px;
             font-weight: 600;
-            letter-spacing: -0.5px;
             color: var(--gris-texto);
             text-decoration: none;
         }
@@ -75,7 +71,6 @@
         .nav-links a {
             color: var(--gris-secundario);
             text-decoration: none;
-            transition: color 0.2s;
         }
 
         .nav-links a:hover {
@@ -103,14 +98,12 @@
             text-align: center;
             font-size: clamp(32px, 6vw, 48px);
             font-weight: 700;
-            letter-spacing: -0.7px;
             margin-bottom: 12px;
         }
 
         .subhead {
             text-align: center;
-            font-size: 24px;
-            line-height: 1.3;
+            font-size: 20px;
             color: var(--gris-secundario);
             max-width: 650px;
             margin: 0 auto 50px;
@@ -119,7 +112,6 @@
         h2 {
             font-size: 28px;
             font-weight: 600;
-            letter-spacing: -0.4px;
             margin: 70px 0 25px;
             padding-bottom: 10px;
             border-bottom: 1px solid var(--gris-borde);
@@ -150,7 +142,6 @@
         .product-badge {
             font-size: 12px;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
             color: var(--gris-terciario);
             margin-bottom: 6px;
         }
@@ -182,7 +173,6 @@
             font-size: 14px;
             color: var(--gris-secundario);
             padding: 4px 0;
-            line-height: 1.5;
         }
 
         .product-features li::before {
@@ -197,18 +187,16 @@
             padding: 10px 16px;
             border-radius: 20px;
             font-size: 14px;
-            font-weight: 400;
             text-decoration: none;
-            transition: all 0.2s;
             cursor: pointer;
             border: none;
             width: 100%;
+            margin-bottom: 10px;
         }
 
         .btn-primary {
             background: var(--azul);
             color: #fff;
-            margin-bottom: 10px;
         }
 
         .btn-primary:hover {
@@ -224,8 +212,8 @@
             background: #e8e8ed;
         }
 
-        /* --- Ventana de Imagen (Modal) --- */
-        .modal-imagen {
+        /* --- VENTANA CON CARRUSEL --- */
+        .modal {
             display: none;
             position: fixed;
             z-index: 1000;
@@ -234,42 +222,34 @@
             width: 100%;
             height: 100%;
             background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(10px);
             align-items: center;
             justify-content: center;
             padding: 20px;
         }
 
-        .modal-imagen.activo {
+        .modal.activo {
             display: flex;
         }
 
-        .modal-contenedor {
-            position: relative;
-            max-width: 580px;
-            width: 100%;
+        .modal-contenido {
             background: var(--blanco);
             border-radius: 20px;
             padding: 24px;
-            text-align: center;
-            animation: aparecer 0.3s ease;
-        }
-
-        @keyframes aparecer {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
+            max-width: 520px;
+            width: 100%;
+            position: relative;
         }
 
         .modal-cerrar {
             position: absolute;
-            top: 14px;
-            right: 18px;
-            font-size: 22px;
-            color: var(--gris-terciario);
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
             cursor: pointer;
-            transition: color 0.2s;
-            border: none;
+            color: var(--gris-terciario);
             background: none;
+            border: none;
+            z-index: 10;
         }
 
         .modal-cerrar:hover {
@@ -279,27 +259,69 @@
         .modal-titulo {
             font-size: 20px;
             font-weight: 600;
-            margin-bottom: 16px;
-            padding-right: 30px;
-            text-align: left;
+            margin-bottom: 20px;
+            padding-right: 40px;
         }
 
-        .modal-imagen-producto {
+        /* --- CARRUSEL --- */
+        .carrusel {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .carrusel-img {
             width: 100%;
             height: auto;
             border-radius: 12px;
-            object-fit: contain;
-            background: var(--gris-suave);
-            padding: 20px;
+            display: block;
         }
 
-        .modal-descripcion {
-            margin-top: 14px;
-            font-size: 15px;
+        .carrusel-flecha {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .carrusel-flecha:hover {
+            background: rgba(0,0,0,0.8);
+        }
+
+        .carrusel-izquierda {
+            left: 10px;
+        }
+
+        .carrusel-derecha {
+            right: 10px;
+        }
+
+        .carrusel-contador {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 14px;
             color: var(--gris-secundario);
         }
 
-        /* --- Información y Garantía --- */
+        .modal-texto {
+            margin-top: 12px;
+            font-size: 15px;
+            color: var(--gris-secundario);
+            text-align: center;
+        }
+
+        /* --- Información --- */
         .info-block {
             background: var(--gris-suave);
             border-radius: 12px;
@@ -330,10 +352,9 @@
             border: 1px solid var(--gris-borde);
             border-radius: 12px;
             overflow: hidden;
-            background: var(--blanco);
         }
 
-        .faq-question {
+        .faq-pregunta {
             padding: 16px 20px;
             font-size: 16px;
             font-weight: 500;
@@ -341,34 +362,30 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: var(--gris-texto);
-            transition: background 0.2s;
+            background: var(--blanco);
         }
 
-        .faq-question:hover {
+        .faq-pregunta:hover {
             background: var(--gris-suave);
         }
 
         .faq-icon {
-            font-size: 14px;
-            color: var(--gris-terciario);
-            transition: transform 0.3s ease;
+            font-size: 12px;
         }
 
-        .faq-answer {
+        .faq-respuesta {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
+            transition: max-height 0.3s ease;
         }
 
-        .faq-answer-inner {
+        .faq-texto {
             padding: 0 20px 16px;
             font-size: 15px;
             color: var(--gris-secundario);
-            line-height: 1.6;
         }
 
-        .faq-item.abierta .faq-answer {
+        .faq-item.abierta .faq-respuesta {
             max-height: 200px;
         }
 
@@ -387,23 +404,17 @@
         .contact-section h2 {
             border: none;
             margin-top: 0;
-            padding-top: 0;
         }
 
         .contact-data {
             font-size: 17px;
             color: var(--gris-secundario);
             margin: 12px 0;
-            line-height: 1.6;
         }
 
         .contact-data a {
             color: var(--azul);
             text-decoration: none;
-        }
-
-        .contact-data a:hover {
-            text-decoration: underline;
         }
 
         .social-links {
@@ -422,34 +433,20 @@
             font-size: 16px;
             font-weight: 500;
             text-decoration: none;
-            transition: background 0.2s;
             border: 1px solid var(--gris-borde);
         }
 
         .social-link:hover {
             background: #e8e8ed;
-            border-color: #bbb;
         }
 
-        /* --- Pie de página --- */
         footer {
             border-top: 1px solid var(--gris-borde);
             margin-top: 60px;
-            padding: 20px 22px 30px;
+            padding: 20px;
             text-align: center;
             font-size: 12px;
             color: var(--gris-terciario);
-            max-width: 980px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* --- Responsivo --- */
-        @media (max-width: 734px) {
-            .nav-links { gap: 12px; }
-            .nav-links { font-size: 10.5px; }
-            main { padding: 70px 16px 40px; }
-            .social-link { padding: 12px 22px; font-size: 15px; }
         }
     </style>
 </head>
@@ -470,7 +467,6 @@
 </nav>
 
 <main id="inicio">
-
     <div class="brand-header">
         <h1>Compra los AirPods en NEOVIX</h1>
         <p>Distribuidor autorizado • Productos 100% originales Apple</p>
@@ -478,11 +474,10 @@
 
     <p class="subhead">Elige el modelo ideal para ti. Todos los equipos verificados, con garantía y respaldo de NEOVIX.</p>
 
-    <!-- Modelos de AirPods -->
     <h2 id="modelos">Elige tu AirPods</h2>
     <div class="product-grid">
 
-        <!-- AirPods 4 con Cancelación Activa -->
+        <!-- 🎧 AirPods 4 — IMÁGENES OFICIALES DE APPLE -->
         <div class="product-card">
             <span class="product-badge">AirPods 4</span>
             <h3>Con Cancelación Activa de Ruido</h3>
@@ -491,15 +486,19 @@
                 <li>Cancelación Activa de Ruido</li>
                 <li>Audio Adaptativo y modo Ambiente</li>
                 <li>Audio Espacial personalizado</li>
-                <li>Traducción en Vivo</li>
                 <li>Hasta 5 horas de reproducción</li>
-                <li>Resistencia al polvo, sudor y agua (IP54)</li>
+                <li>Resistencia IP54 al polvo y agua</li>
             </ul>
-            <button class="btn btn-primary" onclick="mostrarImagen('img-airpods4', 'AirPods 4 con Cancelación Activa de Ruido')">Ver producto</button>
+            <button class="btn btn-primary" onclick="abrirCarrusel('AirPods 4 con Cancelación Activa', [
+                'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-4-2024-noise-select-240829?wid=546&hei=452&fmt=jpeg&qlt=90&.v=1712091289113',
+                'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-4-2024-noise-side-240829?wid=546&hei=452&fmt=jpeg&qlt=90&.v=1712091289423',
+                'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-4-2024-charging-case-240829?wid=546&hei=452&fmt=jpeg&qlt=90&.v=1712091289762',
+                'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-4-2024-noise-colors-240829?wid=546&hei=452&fmt=jpeg&qlt=90&.v=1712948564352'
+            ])">Ver producto</button>
             <a href="#contacto" class="btn btn-secondary">Consultar disponibilidad</a>
         </div>
 
-        <!-- AirPods Pro 3 -->
+        <!-- 🎧 AirPods Pro 3 — IMÁGENES OFICIALES DE APPLE -->
         <div class="product-card">
             <span class="product-badge">AirPods Pro 3</span>
             <h3>Cancelación de ruido líder mundial</h3>
@@ -507,96 +506,101 @@
             <ul class="product-features">
                 <li>Hasta 4 veces más Cancelación Activa</li>
                 <li>Audio Espacial de alta definición</li>
-                <li>Detección de frecuencia cardiaca</li>
                 <li>Traducción en Vivo</li>
                 <li>Resistencia IP57 al polvo y agua</li>
                 <li>Hasta 8 horas de batería</li>
             </ul>
-            <button class="btn btn-primary" onclick="mostrarImagen('img-pro3', 'AirPods Pro 3')">Ver producto</button>
+            <button class="btn btn-primary" onclick="abrirCarrusel('AirPods Pro 3', [
+                'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-pro-2-2023-select-230912?wid=546&hei=452&fmt=jpeg&qlt=90&.v=1693982341628',
+                'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-pro-2-2023-side-230912?wid=546&hei=452&fmt=jpeg&qlt=90&.v=1693982342115',
+                'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-pro-2-2023-charging-case-230912?wid=546&hei=452&fmt=jpeg&qlt=90&.v=1693982341967',
+                'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-pro-2-2023-colors-230912?wid=546&hei=452&fmt=jpeg&qlt=90&.v=1693982629874'
+            ])">Ver producto</button>
             <a href="#contacto" class="btn btn-secondary">Consultar disponibilidad</a>
         </div>
 
-        <!-- AirPods Max 2 -->
+        <!-- 🎧 AirPods Max 2 — IMÁGENES OFICIALES DE APPLE -->
         <div class="product-card">
             <span class="product-badge">AirPods Max 2</span>
             <h3>Sonido de nivel profesional</h3>
             <p class="product-price"><strong>$13,499.00</strong> MXN</p>
             <ul class="product-features">
-                <li>Cancelación Activa hasta 1.5x mayor</li>
+                <li>Cancelación Activa mejorada</li>
                 <li>Audio Lossless y ultrabaja latencia</li>
                 <li>Audio Espacial personalizado</li>
-                <li>Traducción en Vivo</li>
                 <li>Hasta 20 horas de batería</li>
                 <li>Diseño premium sobre oreja</li>
             </ul>
-            <button class="btn btn-primary" onclick="mostrarImagen('img-max2', 'AirPods Max 2')">Ver producto</button>
+            <button class="btn btn-primary" onclick="abrirCarrusel('AirPods Max 2', [
+                'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-2024-select-240909?wid=546&hei=452&fmt=jpeg&qlt=90&.v=1724542480024',
+                'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-2024-side-240909?wid=546&hei=452&fmt=jpeg&qlt=90&.v=1724542479823',
+                'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-2024-colors-240909?wid=546&hei=452&fmt=jpeg&qlt=90&.v=1724542480217',
+                'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-2024-smart-case-240909?wid=546&hei=452&fmt=jpeg&qlt=90&.v=1724542480456'
+            ])">Ver producto</button>
             <a href="#contacto" class="btn btn-secondary">Consultar disponibilidad</a>
         </div>
 
     </div>
 
-    <!-- Ventana de Imagen -->
-    <div id="ventana-imagen" class="modal-imagen" onclick="cerrarImagen(event)">
-        <div class="modal-contenedor" onclick="event.stopPropagation()">
-            <button class="modal-cerrar" onclick="cerrarImagen(event)">&times;</button>
-            <h3 id="modal-nombre" class="modal-titulo"></h3>
-            <img id="modal-imagen" class="modal-imagen-producto" alt="">
-            <p class="modal-descripcion">Imagen de referencia. Producto 100% original Apple.</p>
+    <!-- VENTANA CON CARRUSEL -->
+    <div id="miModal" class="modal" onclick="cerrarModal(event)">
+        <div class="modal-contenido" onclick="event.stopPropagation()">
+            <button class="modal-cerrar" onclick="cerrarModal(event)">&times;</button>
+            <h3 id="modalNombre" class="modal-titulo"></h3>
+            
+            <div class="carrusel">
+                <button class="carrusel-flecha carrusel-izquierda" onclick="anteriorImagen()">&#8249;</button>
+                <img id="carruselImagen" class="carrusel-img" alt="">
+                <button class="carrusel-flecha carrusel-derecha" onclick="siguienteImagen()">&#8250;</button>
+            </div>
+            
+            <div class="carrusel-contador">
+                <span id="imagenActual">1</span> de <span id="imagenTotal">4</span>
+            </div>
+            
+            <p class="modal-texto">Imágenes oficiales de referencia. Producto 100% original Apple.</p>
         </div>
     </div>
 
-    <!-- Garantía e Información -->
+    <!-- Garantía -->
     <div class="info-block" id="garantia">
         <h3>Compra segura con NEOVIX</h3>
-        <p>Somos distribuidores especializados en productos Apple. Cada AirPods es 100% original, verificado y respaldado por nuestra garantía. Sin letras pequeñas. Sin sorpresas. Recibes exactamente lo que pediste, con la confianza de comprar con nosotros.</p>
-        <p style="margin-top: 8px; font-size: 12px; color: var(--gris-terciario);">Precios incluyen nuestra garantía de respaldo y servicio de verificación. Envíos a toda la República Mexicana con número de seguimiento.</p>
+        <p>Somos distribuidores especializados en productos Apple. Cada AirPods es 100% original, verificado y respaldado por nuestra garantía. Sin letras pequeñas. Sin sorpresas. Recibes exactamente lo que pediste.</p>
     </div>
 
     <!-- Preguntas Frecuentes -->
     <h2 id="faq">Preguntas Frecuentes</h2>
     <div class="faq-container">
         <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this.parentElement)">
-                ¿Son productos originales Apple?
-                <span class="faq-icon">▼</span>
+            <div class="faq-pregunta" onclick="toggleFaq(this.parentElement)">
+                ¿Son productos originales Apple? <span class="faq-icon">▼</span>
             </div>
-            <div class="faq-answer">
-                <div class="faq-answer-inner">
-                    Sí, absolutamente. Todos nuestros AirPods son productos 100% originales Apple, verificados y garantizados.
-                </div>
+            <div class="faq-respuesta">
+                <div class="faq-texto">Sí, absolutamente. Todos nuestros AirPods son productos 100% originales Apple, verificados y garantizados.</div>
             </div>
         </div>
         <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this.parentElement)">
-                ¿Cuánto tiempo tardan en llegar?
-                <span class="faq-icon">▼</span>
+            <div class="faq-pregunta" onclick="toggleFaq(this.parentElement)">
+                ¿Cuánto tiempo tardan en llegar? <span class="faq-icon">▼</span>
             </div>
-            <div class="faq-answer">
-                <div class="faq-answer-inner">
-                    Los envíos dentro de México suelen llegar en 3 a 6 días hábiles. Cada envío incluye número de seguimiento.
-                </div>
+            <div class="faq-respuesta">
+                <div class="faq-texto">Los envíos dentro de México suelen llegar en 3 a 6 días hábiles. Cada envío incluye número de seguimiento.</div>
             </div>
         </div>
         <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this.parentElement)">
-                ¿Tienen garantía los AirPods?
-                <span class="faq-icon">▼</span>
+            <div class="faq-pregunta" onclick="toggleFaq(this.parentElement)">
+                ¿Tienen garantía los AirPods? <span class="faq-icon">▼</span>
             </div>
-            <div class="faq-answer">
-                <div class="faq-answer-inner">
-                    Sí, todos cuentan con garantía por escrito. Si presentan algún fallo de fábrica, nosotros lo resolvemos.
-                </div>
+            <div class="faq-respuesta">
+                <div class="faq-texto">Sí, todos cuentan con garantía por escrito. Si presentan algún fallo de fábrica, nosotros lo resolvemos.</div>
             </div>
         </div>
         <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this.parentElement)">
-                ¿Cómo puedo pagar?
-                <span class="faq-icon">▼</span>
+            <div class="faq-pregunta" onclick="toggleFaq(this.parentElement)">
+                ¿Cómo puedo pagar? <span class="faq-icon">▼</span>
             </div>
-            <div class="faq-answer">
-                <div class="faq-answer-inner">
-                    Aceptamos transferencias, depósitos y pago por mensaje. Contáctanos y te compartimos todos los detalles.
-                </div>
+            <div class="faq-respuesta">
+                <div class="faq-texto">Aceptamos transferencias, depósitos y pago por mensaje. Contáctanos y te compartimos todos los detalles.</div>
             </div>
         </div>
     </div>
@@ -618,44 +622,56 @@
 
 </main>
 
-<!-- Pie -->
 <footer>
-    © 2026 NEOVIX • Distribuidor de productos Apple • AirPods 100% Originales • Todos los derechos reservados.
+    © 2026 NEOVIX • Distribuidor de productos Apple • AirPods 100% Originales
 </footer>
 
 <script>
-    // Función para abrir imagen del producto
-    function mostrarImagen(tipo, nombre) {
-        const ventana = document.getElementById('ventana-imagen');
-        const modalNombre = document.getElementById('modal-nombre');
-        const modalImagen = document.getElementById('modal-imagen');
+    let imagenesActuales = [];
+    let indiceActual = 0;
 
-        // Imágenes de ejemplo — puedes reemplazar estas URLs por las imágenes reales que tengas
-        const imagenes = {
-            'img-airpods4': 'https://support.apple.com/library/content/dam/edam/applecare/images/en_US/airpods/airpods-4-with-active-noise-cancellation.png',
-            'img-pro3': 'https://support.apple.com/library/content/dam/edam/applecare/images/en_US/airpods/airpods-pro-3.png',
-            'img-max2': 'https://support.apple.com/library/content/dam/edam/applecare/images/en_US/airpods/airpods-max-2.png'
-        };
-
-        modalNombre.textContent = nombre;
-        modalImagen.src = imagenes[tipo];
-        modalImagen.alt = nombre;
-        ventana.classList.add('activo');
+    // ✅ Abrir carrusel con imágenes OFICIALES de Apple
+    function abrirCarrusel(nombre, listaImagenes) {
+        const modal = document.getElementById('miModal');
+        document.getElementById('modalNombre').textContent = nombre;
+        imagenesActuales = listaImagenes;
+        indiceActual = 0;
+        document.getElementById('imagenTotal').textContent = listaImagenes.length;
+        mostrarImagenActual();
+        modal.classList.add('activo');
         document.body.style.overflow = 'hidden';
     }
 
-    // Función para cerrar imagen
-    function cerrarImagen(event) {
-        const ventana = document.getElementById('ventana-imagen');
-        if (event.target === ventana || event.target.classList.contains('modal-cerrar')) {
-            ventana.classList.remove('activo');
+    // ✅ Mostrar imagen actual
+    function mostrarImagenActual() {
+        document.getElementById('carruselImagen').src = imagenesActuales[indiceActual];
+        document.getElementById('imagenActual').textContent = indiceActual + 1;
+    }
+
+    // ✅ Siguiente imagen
+    function siguienteImagen() {
+        indiceActual = (indiceActual + 1) % imagenesActuales.length;
+        mostrarImagenActual();
+    }
+
+    // ✅ Imagen anterior
+    function anteriorImagen() {
+        indiceActual = (indiceActual - 1 + imagenesActuales.length) % imagenesActuales.length;
+        mostrarImagenActual();
+    }
+
+    // ✅ Cerrar ventana
+    function cerrarModal(event) {
+        const modal = document.getElementById('miModal');
+        if (event.target === modal || event.target.classList.contains('modal-cerrar')) {
+            modal.classList.remove('activo');
             document.body.style.overflow = 'auto';
         }
     }
 
-    // Función para preguntas frecuentes
-    function toggleFaq(faqItem) {
-        faqItem.classList.toggle('abierta');
+    // ✅ Preguntas frecuentes
+    function toggleFaq(elemento) {
+        elemento.classList.toggle('abierta');
     }
 </script>
 
