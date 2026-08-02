@@ -1,868 +1,661 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>NEOVIX • AirPods</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEOVIX • Distribuidor Autorizado de AirPods</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, 'Orbitron', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+        }
+
+        :root {
+            --blanco: #ffffff;
+            --fondo: #fbfbfd;
+            --gris-suave: #f5f5f7;
+            --gris-borde: #d2d2d7;
+            --gris-texto: #1d1d1f;
+            --gris-secundario: #424245;
+            --gris-terciario: #86868b;
+            --azul: #0071e3;
+            --azul-hover: #0077ed;
+        }
+
+        html {
+            background: var(--blanco);
+            color: var(--gris-texto);
             scroll-behavior: smooth;
         }
 
-        /* 🎨 PALETA ACTUALIZADA: NEGRO + GRIS */
-        :root {
-            --negro-base: #000000;
-            --negro-suave: #0a0a0a;
-            --gris-oscuro-fondo: #111111;
-            --gris-medio-tarjetas: #1a1a1a;
-            --gris-botones: #242424;
-            --gris-claro-texto: #c8c8c8;
-            --gris-borde: #333333;
-            --gris-resaltado: #555555;
-            --gris-destacado: #7a7a7a;
-            --blanco: #ffffff;
-            --gris-brillo: #999999;
-            --sombra-luz: 0 0 20px rgba(153, 153, 153, 0.2);
-            --sombra-gris: 0 0 15px rgba(100, 100, 100, 0.2);
-            --sombra-fuerte: 0 0 30px rgba(153, 153, 153, 0.35);
+        body {
+            line-height: 1.47;
+            font-weight: 400;
         }
 
-        @keyframes aparecer {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes brillo {
-            0% { box-shadow: 0 0 8px var(--gris-brillo); }
-            50% { box-shadow: 0 0 25px var(--gris-brillo), 0 0 50px rgba(153,153,153,0.25); }
-            100% { box-shadow: 0 0 8px var(--gris-brillo); }
-        }
-
-        @keyframes linea-recorrida {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        @keyframes linea-recorrida-vertical {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(100%); }
-        }
-
-        @keyframes escaneo-vertical {
-            0% { transform: translateY(-100%); opacity: 0.1; }
-            50% { transform: translateY(100%); opacity: 0.15; }
-            100% { transform: translateY(-100%); opacity: 0.1; }
-        }
-
-        .aparecer {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease forwards;
-        }
-        .aparecer.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- MENÚ DE NAVEGACIÓN --- */
+        /* --- Barra de Navegación --- */
         nav {
             position: fixed;
-            width: 100%;
             top: 0;
             left: 0;
-            background: rgba(0, 0, 0, 0.92);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(100, 100, 100, 0.15);
+            width: 100%;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.12);
             z-index: 999;
-            padding: 1rem 4%;
+        }
+
+        .nav-inner {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 22px;
+            height: 44px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            min-height: 65px;
-            transition: all 0.3s ease;
-        }
-        nav.scrolled {
-            padding: 0.6rem 4%;
-            background: rgba(0, 0, 0, 0.96);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
 
-        .logo-nav {
-            font-size: clamp(1.2rem, 4vw, 1.5rem);
-            font-weight: 800;
-            letter-spacing: 2px;
-            background: linear-gradient(90deg, var(--gris-destacado), var(--blanco));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .menu {
-            display: flex;
-            gap: 1.2rem;
-        }
-
-        .menu a {
-            color: var(--gris-claro-texto);
+        .logo {
+            font-size: 19px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: var(--gris-texto);
             text-decoration: none;
-            font-size: clamp(0.8rem, 2.5vw, 0.95rem);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            transition: all 0.3s ease;
         }
 
-        .menu a:hover {
-            color: var(--gris-brillo);
-            text-shadow: 0 0 10px rgba(153,153,153,0.4);
-        }
-
-        .menu a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background: linear-gradient(90deg, transparent, var(--gris-brillo), transparent);
-            transition: width 0.4s ease;
-        }
-
-        .menu a:hover::after {
-            width: 100%;
-        }
-
-        /* --- SECCIONES GENERALES --- */
-        section {
-            width: 100%;
-            min-height: 100vh;
-            padding: 85px 4% 3rem;
-            position: relative;
-            overflow: hidden;
-            background: var(--gris-oscuro-fondo);
-        }
-
-        .titulo-seccion {
-            text-align: center;
-            font-size: clamp(1.8rem, 6vw, 2.5rem);
-            font-weight: 700;
-            color: var(--blanco);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 2.5rem;
-            position: relative;
-        }
-
-        .titulo-seccion::after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--gris-brillo), transparent);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        /* --- SECCIÓN INICIO --- */
-        #inicio {
-            background: var(--negro-base) url("fondo-neovix.jpg") no-repeat center center;
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            min-height: 100vh;
+        .nav-links {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            text-align: center;
+            gap: 24px;
+            font-size: 12px;
         }
 
-        #inicio::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(10,10,10,0.65) 100%);
-        }
-
-        #inicio::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gris-brillo), transparent);
-            top: 0;
-            animation: escaneo-vertical 10s linear infinite;
-        }
-
-        .contenido-inicio {
-            position: relative;
-            z-index: 2;
-            color: var(--blanco);
-            animation: aparecer 1s ease forwards;
-        }
-        .contenido-inicio h1 {
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            margin-bottom: 1rem;
-            background: linear-gradient(90deg, var(--gris-destacado), var(--blanco), var(--gris-destacado));
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: brillo 4s linear infinite;
-        }
-        .contenido-inicio p {
-            font-size: clamp(1rem, 3vw, 1.4rem);
-            color: var(--gris-claro-texto);
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-        .boton-llamada {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: linear-gradient(90deg, var(--gris-resaltado), var(--gris-destacado));
-            color: var(--blanco);
+        .nav-links a {
+            color: var(--gris-secundario);
             text-decoration: none;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.4s ease;
-            box-shadow: 0 0 15px rgba(153,153,153,0.2);
-        }
-        .boton-llamada:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 0 30px rgba(153,153,153,0.35);
+            transition: color 0.2s;
         }
 
-        /* --- SECCIÓN NOSOTROS --- */
-        #nosotros {
-            background: linear-gradient(180deg, var(--gris-oscuro-fondo) 0%, var(--negro-suave) 100%);
+        .nav-links a:hover {
+            color: var(--gris-texto);
         }
 
-        .contenedor-nosotros {
-            max-width: 900px;
+        /* --- Contenedor Principal --- */
+        main {
+            max-width: 980px;
             margin: 0 auto;
-            position: relative;
-            padding: clamp(1.5rem, 5vw, 2.5rem);
-            border-radius: 16px;
-            background: var(--gris-medio-tarjetas);
-            border: 1px solid rgba(153, 153, 153, 0.12);
-            overflow: hidden;
+            padding: 80px 22px 60px;
         }
 
-        .contenedor-nosotros::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gris-brillo), transparent);
-            animation: linea-recorrida 6s linear infinite;
-        }
-
-        .contenedor-nosotros::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gris-brillo), transparent);
-            animation: linea-recorrida 6s linear infinite reverse;
-        }
-
-        .contenido-nosotros {
-            color: var(--gris-claro-texto);
-            font-size: clamp(1rem, 3vw, 1.2rem);
-            line-height: 1.8;
+        .brand-header {
             text-align: center;
-            position: relative;
-            z-index: 2;
+            padding: 40px 0 30px;
         }
 
-        /* --- SECCIÓN PRODUCTOS --- */
-        #productos {
-            background: linear-gradient(180deg, var(--gris-oscuro-fondo) 0%, var(--negro-suave) 100%);
+        .brand-header p {
+            color: var(--gris-secundario);
+            font-size: 17px;
         }
 
-        .grid-productos {
+        h1 {
+            text-align: center;
+            font-size: clamp(32px, 6vw, 48px);
+            font-weight: 700;
+            letter-spacing: -0.7px;
+            margin-bottom: 12px;
+        }
+
+        .subhead {
+            text-align: center;
+            font-size: 24px;
+            line-height: 1.3;
+            color: var(--gris-secundario);
+            max-width: 650px;
+            margin: 0 auto 50px;
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -0.4px;
+            margin: 70px 0 25px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--gris-borde);
+        }
+
+        /* --- Tarjetas de Productos --- */
+        .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: clamp(1.8rem, 5vw, 2.8rem);
-            max-width: 1000px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
         }
 
-        .tarjeta-producto {
-            background: var(--gris-medio-tarjetas);
-            border-radius: 16px;
-            padding: clamp(2rem, 5vw, 2.8rem) clamp(1.4rem, 4vw, 2rem);
-            text-align: center;
-            border: 1px solid rgba(153,153,153,0.1);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.5s ease;
+        .product-card {
+            background: var(--blanco);
+            border: 1px solid var(--gris-borde);
+            border-radius: 18px;
+            padding: 30px 24px;
+            transition: all 0.3s ease;
         }
 
-        .tarjeta-producto::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gris-brillo), transparent);
-            animation: linea-recorrida 5s linear infinite;
+        .product-card:hover {
+            border-color: #bbb;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
         }
 
-        .tarjeta-producto::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gris-brillo), transparent);
-            animation: linea-recorrida 5s linear infinite reverse;
+        .product-badge {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--gris-terciario);
+            margin-bottom: 6px;
         }
 
-        .tarjeta-producto .lado-izq {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(180deg, transparent, var(--gris-brillo), transparent);
-            animation: linea-recorrida-vertical 7s linear infinite;
+        .product-card h3 {
+            font-size: 21px;
+            font-weight: 600;
+            margin-bottom: 8px;
         }
 
-        .tarjeta-producto .lado-der {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(180deg, transparent, var(--gris-brillo), transparent);
-            animation: linea-recorrida-vertical 7s linear infinite reverse;
+        .product-price {
+            font-size: 17px;
+            color: var(--gris-secundario);
+            margin-bottom: 16px;
         }
 
-        .tarjeta-producto:hover {
-            transform: translateY(-8px) scale(1.02);
-            border-color: rgba(153,153,153,0.3);
-            box-shadow: var(--sombra-luz);
+        .product-price strong {
+            color: var(--gris-texto);
+            font-size: 19px;
+            font-weight: 600;
         }
 
-        .tarjeta-producto h3 {
-            color: var(--blanco);
-            margin: 1rem 0;
-            font-size: clamp(1.2rem, 4vw, 1.45rem);
-            letter-spacing: 1px;
+        .product-features {
+            list-style: none;
+            margin-bottom: 22px;
         }
 
-        .tarjeta-producto p {
-            color: var(--gris-claro-texto);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-            font-size: clamp(0.9rem, 2.8vw, 1rem);
+        .product-features li {
+            font-size: 14px;
+            color: var(--gris-secundario);
+            padding: 4px 0;
+            line-height: 1.5;
+        }
+
+        .product-features li::before {
+            content: "✓ ";
+            color: var(--azul);
+            font-weight: 600;
         }
 
         .btn {
-            display: inline-block;
-            padding: 0.85rem 1.8rem;
-            background: var(--gris-botones);
-            color: var(--blanco);
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            font-size: clamp(0.9rem, 2.8vw, 1rem);
-            border: 1px solid rgba(153,153,153,0.2);
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gris-brillo), transparent);
-            animation: linea-recorrida 4s linear infinite;
-        }
-
-        .btn::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gris-brillo), transparent);
-            animation: linea-recorrida 4s linear infinite reverse;
-        }
-
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: var(--sombra-fuerte);
-            border-color: var(--gris-brillo);
-            animation: brillo 2.5s infinite;
-        }
-
-        /* --- SECCIÓN ¿POR QUÉ ELEGIRNOS? --- */
-        #garantia {
-            background: linear-gradient(180deg, var(--gris-oscuro-fondo) 0%, var(--negro-suave) 100%);
-        }
-
-        .grid-ventajas {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: clamp(1.5rem, 4vw, 2.5rem);
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .ventaja {
-            padding: clamp(1.8rem, 5vw, 2.2rem);
+            display: block;
             text-align: center;
-            border-radius: 14px;
-            background: var(--gris-medio-tarjetas);
-            border: 1px solid rgba(153,153,153,0.08);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ventaja::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+            padding: 10px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 400;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
             width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gris-brillo), transparent);
-            animation: linea-recorrida 8s linear infinite;
         }
 
-        .ventaja:hover {
-            transform: translateY(-6px);
-            border-color: rgba(153,153,153,0.25);
-            box-shadow: var(--sombra-luz);
+        .btn-primary {
+            background: var(--azul);
+            color: #fff;
+            margin-bottom: 10px;
         }
 
-        .ventaja h4 {
-            color: var(--blanco);
-            font-size: clamp(1.1rem, 3.5vw, 1.3rem);
-            margin: 0 0 0.8rem 0;
+        .btn-primary:hover {
+            background: var(--azul-hover);
         }
 
-        .ventaja p {
-            color: var(--gris-claro-texto);
-            line-height: 1.7;
-            font-size: clamp(0.9rem, 2.8vw, 1rem);
+        .btn-secondary {
+            background: var(--gris-suave);
+            color: var(--azul);
         }
 
-        /* --- SECCIÓN PREGUNTAS FRECUENTES --- */
-        #faq {
-            background: linear-gradient(180deg, var(--gris-oscuro-fondo) 0%, var(--negro-suave) 100%);
+        .btn-secondary:hover {
+            background: #e8e8ed;
         }
-        .contenedor-faq {
-            max-width: 800px;
-            margin: 0 auto;
+
+        /* --- Ventana de Imagen (Modal) --- */
+        .modal-imagen {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-imagen.activo {
+            display: flex;
+        }
+
+        .modal-contenedor {
+            position: relative;
+            max-width: 580px;
+            width: 100%;
+            background: var(--blanco);
+            border-radius: 20px;
+            padding: 24px;
+            text-align: center;
+            animation: aparecer 0.3s ease;
+        }
+
+        @keyframes aparecer {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal-cerrar {
+            position: absolute;
+            top: 14px;
+            right: 18px;
+            font-size: 22px;
+            color: var(--gris-terciario);
+            cursor: pointer;
+            transition: color 0.2s;
+            border: none;
+            background: none;
+        }
+
+        .modal-cerrar:hover {
+            color: var(--gris-texto);
+        }
+
+        .modal-titulo {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            padding-right: 30px;
+            text-align: left;
+        }
+
+        .modal-imagen-producto {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            object-fit: contain;
+            background: var(--gris-suave);
+            padding: 20px;
+        }
+
+        .modal-descripcion {
+            margin-top: 14px;
+            font-size: 15px;
+            color: var(--gris-secundario);
+        }
+
+        /* --- Información y Garantía --- */
+        .info-block {
+            background: var(--gris-suave);
+            border-radius: 12px;
+            padding: 28px 24px;
+            margin-top: 40px;
+        }
+
+        .info-block h3 {
+            font-size: 17px;
+            margin-bottom: 12px;
+        }
+
+        .info-block p {
+            font-size: 14px;
+            color: var(--gris-secundario);
+            line-height: 1.6;
+        }
+
+        /* --- Preguntas Frecuentes --- */
+        .faq-container {
+            margin-top: 30px;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 12px;
         }
-        .pregunta {
-            background: var(--gris-medio-tarjetas);
-            border: 1px solid rgba(153,153,153,0.1);
+
+        .faq-item {
+            border: 1px solid var(--gris-borde);
             border-radius: 12px;
             overflow: hidden;
+            background: var(--blanco);
         }
-        .pregunta-titulo {
-            padding: 1.2rem 1.5rem;
-            color: var(--blanco);
-            font-weight: 600;
+
+        .faq-question {
+            padding: 16px 20px;
+            font-size: 16px;
+            font-weight: 500;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.3s ease;
+            color: var(--gris-texto);
+            transition: background 0.2s;
         }
-        .pregunta-titulo:hover {
-            background: rgba(153,153,153,0.05);
+
+        .faq-question:hover {
+            background: var(--gris-suave);
         }
-        .pregunta-respuesta {
+
+        .faq-icon {
+            font-size: 14px;
+            color: var(--gris-terciario);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.3s ease;
-            color: var(--gris-claro-texto);
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-answer-inner {
+            padding: 0 20px 16px;
+            font-size: 15px;
+            color: var(--gris-secundario);
             line-height: 1.6;
         }
-        .pregunta-respuesta.abierta {
-            max-height: 300px;
-            padding: 0 1.5rem 1.2rem;
+
+        .faq-item.abierta .faq-answer {
+            max-height: 200px;
         }
 
-        /* --- SECCIÓN CONTACTO --- */
-        #contacto {
-            background: var(--negro-base) url("fondo-redes.jpg") no-repeat center center;
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            position: relative;
-            color: var(--blanco);
+        .faq-item.abierta .faq-icon {
+            transform: rotate(180deg);
         }
 
-        #contacto::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.85);
-        }
-
-        #contacto > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        .info-contacto {
+        /* --- Contacto --- */
+        .contact-section {
             text-align: center;
-            margin-bottom: 2.5rem;
-            color: var(--gris-claro-texto);
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-        .info-contacto p {
-            margin: 0.5rem 0;
-        }
-        .info-contacto strong {
-            color: var(--gris-destacado);
+            margin-top: 70px;
+            padding-top: 40px;
+            border-top: 1px solid var(--gris-borde);
         }
 
-        .redes-lista {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .boton-red {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            padding: clamp(1.1rem, 3vw, 1.3rem);
-            background: #181818;
-            border: 1px solid var(--gris-borde);
-            border-radius: 10px;
-            text-decoration: none;
-            color: var(--blanco);
-            font-size: clamp(1rem, 3vw, 1.1rem);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .boton-red:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--sombra-gris);
-        }
-        .boton-red.instagram:hover {
-            border-color: #E4405F;
-            background: linear-gradient(90deg, rgba(228,64,95,0.15), #181818);
-        }
-        .boton-red.facebook:hover {
-            border-color: #1877F2;
-            background: linear-gradient(90deg, rgba(24,119,242,0.15), #181818);
-        }
-        .boton-red.whatsapp:hover {
-            border-color: #25D366;
-            background: linear-gradient(90deg, rgba(37,211,102,0.15), #181818);
-        }
-
-        .icono-red {
-            width: 26px;
-            height: 26px;
-            display: inline-block;
-            vertical-align: middle;
-        }
-
-        /* --- BOTÓN IR ARRIBA --- */
-        #ir-arriba {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: var(--gris-destacado);
-            color: var(--blanco);
+        .contact-section h2 {
             border: none;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+        .contact-data {
+            font-size: 17px;
+            color: var(--gris-secundario);
+            margin: 12px 0;
+            line-height: 1.6;
+        }
+
+        .contact-data a {
+            color: var(--azul);
+            text-decoration: none;
+        }
+
+        .contact-data a:hover {
+            text-decoration: underline;
+        }
+
+        .social-links {
             display: flex;
-            align-items: center;
+            gap: 18px;
             justify-content: center;
-            z-index: 900;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(153,153,153,0.35);
-        }
-        #ir-arriba.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-        #ir-arriba:hover {
-            transform: translateY(-4px);
+            margin-top: 32px;
+            flex-wrap: wrap;
         }
 
-        /* --- PIE DE PÁGINA --- */
+        .social-link {
+            background: var(--gris-suave);
+            color: var(--gris-texto);
+            padding: 14px 28px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.2s;
+            border: 1px solid var(--gris-borde);
+        }
+
+        .social-link:hover {
+            background: #e8e8ed;
+            border-color: #bbb;
+        }
+
+        /* --- Pie de página --- */
         footer {
-            background: var(--negro-base);
-            color: var(--gris-claro-texto);
+            border-top: 1px solid var(--gris-borde);
+            margin-top: 60px;
+            padding: 20px 22px 30px;
             text-align: center;
-            padding: 1.8rem 4%;
-            font-size: clamp(0.9rem, 2.7vw, 0.95rem);
-            border-top: 1px solid rgba(153,153,153,0.1);
+            font-size: 12px;
+            color: var(--gris-terciario);
+            max-width: 980px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* --- AJUSTES PARA PANTALLAS PEQUEÑAS --- */
-        @media (max-width: 768px) {
-            .menu {
-                gap: 0.8rem;
-            }
-            .menu a {
-                font-size: 0.75rem;
-                letter-spacing: 0.5px;
-            }
-            section {
-                padding: 75px 4% 2.5rem;
-            }
-            .grid-ventajas {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav {
-                flex-direction: column;
-                gap: 0.6rem;
-                padding: 0.8rem 4%;
-                min-height: auto;
-            }
-            section {
-                padding-top: 100px;
-            }
+        /* --- Responsivo --- */
+        @media (max-width: 734px) {
+            .nav-links { gap: 12px; }
+            .nav-links { font-size: 10.5px; }
+            main { padding: 70px 16px 40px; }
+            .social-link { padding: 12px 22px; font-size: 15px; }
         }
     </style>
 </head>
 <body>
 
-<nav id="menu-principal">
-    <div class="logo-nav">NEOVIX</div>
-    <div class="menu">
-        <a href="#inicio">Inicio</a>
-        <a href="#nosotros">Nosotros</a>
-        <a href="#productos">AirPods</a>
-        <a href="#garantia">Seguridad</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contacto">Contacto</a>
+<!-- Barra de Navegación -->
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="logo">NEOVIX</a>
+        <div class="nav-links">
+            <a href="#inicio">Inicio</a>
+            <a href="#modelos">Modelos</a>
+            <a href="#garantia">Garantía</a>
+            <a href="#faq">Preguntas</a>
+            <a href="#contacto">Contacto</a>
+        </div>
     </div>
 </nav>
 
-<section id="inicio">
-    <div class="contenido-inicio">
-        <h1>NEOVIX</h1>
-        <p>AirPods Originales • Sonido excepcional • Garantía y confianza</p>
-        <a href="#productos" class="boton-llamada">Ver Modelos</a>
-    </div>
-</section>
+<main id="inicio">
 
-<section id="nosotros" class="aparecer">
-    <h2 class="titulo-seccion">Sobre Nosotros</h2>
-    <div class="contenedor-nosotros">
-        <div class="contenido-nosotros">
-            <p>Somos <strong>NEOVIX</strong>, especialistas en productos Apple originales. Nos enfocamos en ofrecerte la mejor experiencia de sonido con la línea completa de AirPods. Cada equipo es verificado, garantizado y respaldado por nuestra confianza. No solo vendemos productos, te brindamos seguridad, transparencia y la certeza de que estás adquiriendo tecnología 100% original.</p>
-        </div>
+    <div class="brand-header">
+        <h1>Compra los AirPods en NEOVIX</h1>
+        <p>Distribuidor autorizado • Productos 100% originales Apple</p>
     </div>
-</section>
 
-<section id="productos" class="aparecer">
-    <h2 class="titulo-seccion">Nuestros AirPods</h2>
-    <div class="grid-productos">
-        <div class="tarjeta-producto">
-            <span class="lado-izq"></span>
-            <span class="lado-der"></span>
-            <h3>🎧 AirPods 4</h3>
-            <p>Con Cancelación Activa de Ruido. Sonido nítido, conectividad perfecta y batería de larga duración.</p>
-            <a href="#contacto" class="btn">Consultar Precio</a>
+    <p class="subhead">Elige el modelo ideal para ti. Todos los equipos verificados, con garantía y respaldo de NEOVIX.</p>
+
+    <!-- Modelos de AirPods -->
+    <h2 id="modelos">Elige tu AirPods</h2>
+    <div class="product-grid">
+
+        <!-- AirPods 4 con Cancelación Activa -->
+        <div class="product-card">
+            <span class="product-badge">AirPods 4</span>
+            <h3>Con Cancelación Activa de Ruido</h3>
+            <p class="product-price"><strong>$4,799.00</strong> MXN</p>
+            <ul class="product-features">
+                <li>Cancelación Activa de Ruido</li>
+                <li>Audio Adaptativo y modo Ambiente</li>
+                <li>Audio Espacial personalizado</li>
+                <li>Traducción en Vivo</li>
+                <li>Hasta 5 horas de reproducción</li>
+                <li>Resistencia al polvo, sudor y agua (IP54)</li>
+            </ul>
+            <button class="btn btn-primary" onclick="mostrarImagen('img-airpods4', 'AirPods 4 con Cancelación Activa de Ruido')">Ver producto</button>
+            <a href="#contacto" class="btn btn-secondary">Consultar disponibilidad</a>
         </div>
-        <div class="tarjeta-producto">
-            <span class="lado-izq"></span>
-            <span class="lado-der"></span>
-            <h3>🎧 AirPods Pro 3</h3>
-            <p>Cancelación de ruido de próxima generación. Transparencia adaptable y sonido espacial personalizado.</p>
-            <a href="#contacto" class="btn">Consultar Precio</a>
+
+        <!-- AirPods Pro 3 -->
+        <div class="product-card">
+            <span class="product-badge">AirPods Pro 3</span>
+            <h3>Cancelación de ruido líder mundial</h3>
+            <p class="product-price"><strong>$6,299.00</strong> MXN</p>
+            <ul class="product-features">
+                <li>Hasta 4 veces más Cancelación Activa</li>
+                <li>Audio Espacial de alta definición</li>
+                <li>Detección de frecuencia cardiaca</li>
+                <li>Traducción en Vivo</li>
+                <li>Resistencia IP57 al polvo y agua</li>
+                <li>Hasta 8 horas de batería</li>
+            </ul>
+            <button class="btn btn-primary" onclick="mostrarImagen('img-pro3', 'AirPods Pro 3')">Ver producto</button>
+            <a href="#contacto" class="btn btn-secondary">Consultar disponibilidad</a>
         </div>
-        <div class="tarjeta-producto">
-            <span class="lado-izq"></span>
-            <span class="lado-der"></span>
-            <h3>🎧 AirPods Max 2</h3>
-            <p>El máximo nivel de audio. Diseño sobre oreja, materiales premium y calidad de sonido profesional.</p>
-            <a href="#contacto" class="btn">Consultar Precio</a>
+
+        <!-- AirPods Max 2 -->
+        <div class="product-card">
+            <span class="product-badge">AirPods Max 2</span>
+            <h3>Sonido de nivel profesional</h3>
+            <p class="product-price"><strong>$13,499.00</strong> MXN</p>
+            <ul class="product-features">
+                <li>Cancelación Activa hasta 1.5x mayor</li>
+                <li>Audio Lossless y ultrabaja latencia</li>
+                <li>Audio Espacial personalizado</li>
+                <li>Traducción en Vivo</li>
+                <li>Hasta 20 horas de batería</li>
+                <li>Diseño premium sobre oreja</li>
+            </ul>
+            <button class="btn btn-primary" onclick="mostrarImagen('img-max2', 'AirPods Max 2')">Ver producto</button>
+            <a href="#contacto" class="btn btn-secondary">Consultar disponibilidad</a>
         </div>
+
     </div>
-</section>
 
-<section id="garantia" class="aparecer">
-    <h2 class="titulo-seccion">¿Por qué elegirnos?</h2>
-    <div class="grid-ventajas">
-        <div class="ventaja">
-            <h4>✅ Productos Originales</h4>
-            <p>Cada AirPods es 100% auténtico, verificado y con garantía que respalda su funcionamiento.</p>
-        </div>
-        <div class="ventaja">
-            <h4>🔒 Compra Segura</h4>
-            <p>Transparencia total. Precios claros, condiciones justas y atención personalizada siempre.</p>
-        </div>
-        <div class="ventaja">
-            <h4>🚚 Envíos a Todo México</h4>
-            <p>Entrega rápida con número de seguimiento. Sabes en dónde está tu pedido en cada momento.</p>
-        </div>
-        <div class="ventaja">
-            <h4>💬 Atención Directa</h4>
-            <p>Te asesoramos antes, durante y después de tu compra. Estamos aquí para ayudarte.</p>
-        </div>
-    </div>
-</section>
-
-<section id="faq" class="aparecer">
-    <h2 class="titulo-seccion">Preguntas Frecuentes</h2>
-    <div class="contenedor-faq">
-        <div class="pregunta">
-            <div class="pregunta-titulo" onclick="toggleFaq(this)">
-                ¿Son productos originales Apple? <span>▼</span>
-            </div>
-            <div class="pregunta-respuesta">
-                Sí, absolutamente. Todos nuestros AirPods son productos 100% originales Apple, verificados y garantizados.
-            </div>
-        </div>
-        <div class="pregunta">
-            <div class="pregunta-titulo" onclick="toggleFaq(this)">
-                ¿Cuánto tiempo tardan en llegar? <span>▼</span>
-            </div>
-            <div class="pregunta-respuesta">
-                Los envíos dentro de México suelen llegar en 3 a 6 días hábiles. Cada envío incluye número de seguimiento.
-            </div>
-        </div>
-        <div class="pregunta">
-            <div class="pregunta-titulo" onclick="toggleFaq(this)">
-                ¿Tienen garantía los AirPods? <span>▼</span>
-            </div>
-            <div class="pregunta-respuesta">
-                Sí, todos cuentan con garantía por escrito. Si presentan algún fallo de fábrica, nosotros lo resolvemos.
-            </div>
-        </div>
-        <div class="pregunta">
-            <div class="pregunta-titulo" onclick="toggleFaq(this)">
-                ¿Cómo puedo pagar? <span>▼</span>
-            </div>
-            <div class="pregunta-respuesta">
-                Aceptamos transferencias, depósitos y pago por WhatsApp. Contáctanos y te compartimos todos los detalles.
-            </div>
+    <!-- Ventana de Imagen -->
+    <div id="ventana-imagen" class="modal-imagen" onclick="cerrarImagen(event)">
+        <div class="modal-contenedor" onclick="event.stopPropagation()">
+            <button class="modal-cerrar" onclick="cerrarImagen(event)">&times;</button>
+            <h3 id="modal-nombre" class="modal-titulo"></h3>
+            <img id="modal-imagen" class="modal-imagen-producto" alt="">
+            <p class="modal-descripcion">Imagen de referencia. Producto 100% original Apple.</p>
         </div>
     </div>
-</section>
 
-<section id="contacto" class="aparecer">
-    <h2 class="titulo-seccion">Contáctanos</h2>
-    <div class="info-contacto">
-        <p>📧 <strong>Correo:</strong> appneovix@gmail.com</p>
-        <p>📍 <strong>Ubicación:</strong> Estado de México, México</p>
-        <p>💬 Escríbenos y te damos precios y disponibilidad al instante:</p>
+    <!-- Garantía e Información -->
+    <div class="info-block" id="garantia">
+        <h3>Compra segura con NEOVIX</h3>
+        <p>Somos distribuidores especializados en productos Apple. Cada AirPods es 100% original, verificado y respaldado por nuestra garantía. Sin letras pequeñas. Sin sorpresas. Recibes exactamente lo que pediste, con la confianza de comprar con nosotros.</p>
+        <p style="margin-top: 8px; font-size: 12px; color: var(--gris-terciario);">Precios incluyen nuestra garantía de respaldo y servicio de verificación. Envíos a toda la República Mexicana con número de seguimiento.</p>
     </div>
-    <div class="redes-lista">
-        <a href="https://www.instagram.com/neovix.store/" target="_blank" class="boton-red instagram">
-            <svg class="icono-red" viewBox="0 0 24 24" fill="white">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-            </svg>
-            INSTAGRAM
-        </a>
-        <a href="https://www.facebook.com/share/1TzuZk1uhR/?mibextid=wwXIfr" target="_blank" class="boton-red facebook">
-            <svg class="icono-red" viewBox="0 0 24 24" fill="white">
-                <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692h1.971v3z"/>
-            </svg>
-            FACEBOOK
-        </a>
-        <a href="https://wa.me/521XXXXXXXXXX" target="_blank" class="boton-red whatsapp">
-            <svg class="icono-red" viewBox="0 0 24 24" fill="white">
-                <path d="M12 0C5.374 0 0 5.373 0 12c0 2.136.566 4.138 1.556 5.861L.05 23.523a.5.5 0 0 0 .527.627l5.663-.978A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm4.89 17.11c-.208.583-1.035 1.066-1.694 1.213-.452.1-1.042.18-3.022-.647-2.537-1.05-4.167-3.57-4.293-3.74-.126-.17-1.023-1.36-1.023-2.592 0-1.233.646-1.835.874-2.082.228-.247.496-.309.662-.309.166 0 .332 0 .478.005.174.007.368-.08.574.437.208.52.706 1.796.768 1.927.062.13.104.282.02.452-.084.17-.126.282-.252.437-.126.154-.26.345-.378.464-.126.125-.258.26-.11.509.148.248.654 1.078 1.408 1.747.968.853 1.782 1.117 2.03 1.242.248.125.392.105.538-.063.146-.167.627-.732.794-.98.166-.247.332-.207.56-.125.228.082 1.45.682 1.703.807.252.125.419.187.481.292.062.104.062.606-.146 1.189z"/>
-            </svg>
-            WHATSAPP
-        </a>
+
+    <!-- Preguntas Frecuentes -->
+    <h2 id="faq">Preguntas Frecuentes</h2>
+    <div class="faq-container">
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this.parentElement)">
+                ¿Son productos originales Apple?
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Sí, absolutamente. Todos nuestros AirPods son productos 100% originales Apple, verificados y garantizados.
+                </div>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this.parentElement)">
+                ¿Cuánto tiempo tardan en llegar?
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Los envíos dentro de México suelen llegar en 3 a 6 días hábiles. Cada envío incluye número de seguimiento.
+                </div>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this.parentElement)">
+                ¿Tienen garantía los AirPods?
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Sí, todos cuentan con garantía por escrito. Si presentan algún fallo de fábrica, nosotros lo resolvemos.
+                </div>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this.parentElement)">
+                ¿Cómo puedo pagar?
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">
+                    Aceptamos transferencias, depósitos y pago por mensaje. Contáctanos y te compartimos todos los detalles.
+                </div>
+            </div>
+        </div>
     </div>
-</section>
 
-<button id="ir-arriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <!-- Contacto -->
+    <section class="contact-section" id="contacto">
+        <h2>¿Tienes dudas? Escríbenos</h2>
+        <div class="contact-data">
+            <p>Correo: <a href="mailto:appneovix@gmail.com">appneovix@gmail.com</a></p>
+            <p>Estado de México, México</p>
+            <p>Respuesta rápida por mensaje:</p>
+        </div>
+        <div class="social-links">
+            <a href="https://wa.me/521XXXXXXXXXX" target="_blank" class="social-link">WhatsApp</a>
+            <a href="https://www.instagram.com/neovix.store/" target="_blank" class="social-link">Instagram</a>
+            <a href="https://www.facebook.com/share/1TzuZk1uhR/?mibextid=wwXIfr" target="_blank" class="social-link">Facebook</a>
+        </div>
+    </section>
 
+</main>
+
+<!-- Pie -->
 <footer>
-    © 2026 NEOVIX • AirPods Originales • Todos los derechos reservados
+    © 2026 NEOVIX • Distribuidor de productos Apple • AirPods 100% Originales • Todos los derechos reservados.
 </footer>
 
 <script>
-    // Efecto al hacer scroll en el menú
-    const nav = document.getElementById('menu-principal');
-    const irArriba = document.getElementById('ir-arriba');
-    
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 80) {
-            nav.classList.add('scrolled');
-            irArriba.classList.add('visible');
-        } else {
-            nav.classList.remove('scrolled');
-            irArriba.classList.remove('visible');
+    // Función para abrir imagen del producto
+    function mostrarImagen(tipo, nombre) {
+        const ventana = document.getElementById('ventana-imagen');
+        const modalNombre = document.getElementById('modal-nombre');
+        const modalImagen = document.getElementById('modal-imagen');
+
+        // Imágenes de ejemplo — puedes reemplazar estas URLs por las imágenes reales que tengas
+        const imagenes = {
+            'img-airpods4': 'https://support.apple.com/library/content/dam/edam/applecare/images/en_US/airpods/airpods-4-with-active-noise-cancellation.png',
+            'img-pro3': 'https://support.apple.com/library/content/dam/edam/applecare/images/en_US/airpods/airpods-pro-3.png',
+            'img-max2': 'https://support.apple.com/library/content/dam/edam/applecare/images/en_US/airpods/airpods-max-2.png'
+        };
+
+        modalNombre.textContent = nombre;
+        modalImagen.src = imagenes[tipo];
+        modalImagen.alt = nombre;
+        ventana.classList.add('activo');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Función para cerrar imagen
+    function cerrarImagen(event) {
+        const ventana = document.getElementById('ventana-imagen');
+        if (event.target === ventana || event.target.classList.contains('modal-cerrar')) {
+            ventana.classList.remove('activo');
+            document.body.style.overflow = 'auto';
         }
-    });
+    }
 
-    // Animación al aparecer secciones
-    const observador = new IntersectionObserver((entradas) => {
-        entradas.forEach(entrada => {
-            if (entrada.isIntersecting) {
-                entrada.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.aparecer').forEach(seccion => {
-        observador.observe(seccion);
-    });
-
-    // Acordeón de preguntas frecuentes
-    function toggleFaq(titulo) {
-        const respuesta = titulo.nextElementSibling;
-        respuesta.classList.toggle('abierta');
-        const flecha = titulo.querySelector('span');
-        flecha.textContent = respuesta.classList.contains('abierta') ? '▲' : '▼';
+    // Función para preguntas frecuentes
+    function toggleFaq(faqItem) {
+        faqItem.classList.toggle('abierta');
     }
 </script>
 
