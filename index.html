@@ -3,14 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEOVIX • Ropa y Accesorios Calidad G5</title>
+    <title>NEOVIX • Camisas, Playeras y Sudaderas Calidad G5</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
         :root {
             --blanco: #ffffff;
             --gris-suave: #f5f5f7;
@@ -21,377 +16,77 @@
             --azul: #0071e3;
             --azul-hover: #0077ed;
         }
-        html {
-            background: var(--blanco);
-            color: var(--gris-texto);
-            scroll-behavior: smooth;
-        }
-        body {
-            line-height: 1.47;
-        }
-        /* --- Barra de Navegación --- */
+        html { background: var(--blanco); color: var(--gris-texto); scroll-behavior: smooth; }
+        body { line-height: 1.47; }
         nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(255,255,255,0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.12);
-            z-index: 999;
+            position: fixed; top: 0; left: 0; width: 100%;
+            background: rgba(255,255,255,0.8); backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.12); z-index: 999;
         }
-        .nav-inner {
-            max-width: 980px;
-            margin: 0 auto;
-            padding: 0 22px;
-            height: 44px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-size: 19px;
-            font-weight: 600;
-            color: var(--gris-texto);
-            text-decoration: none;
-        }
-        .nav-links {
-            display: flex;
-            gap: 24px;
-            font-size: 12px;
-        }
-        .nav-links a {
-            color: var(--gris-secundario);
-            text-decoration: none;
-        }
-        .nav-links a:hover {
-            color: var(--gris-texto);
-        }
-        /* --- Contenedor Principal --- */
-        main {
-            max-width: 980px;
-            margin: 0 auto;
-            padding: 80px 22px 60px;
-        }
-        .brand-header {
-            text-align: center;
-            padding: 40px 0 30px;
-        }
-        .brand-header p {
-            color: var(--gris-secundario);
-            font-size: 17px;
-        }
-        h1 {
-            text-align: center;
-            font-size: clamp(32px, 6vw, 48px);
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-        .subhead {
-            text-align: center;
-            font-size: 20px;
-            color: var(--gris-secundario);
-            max-width: 650px;
-            margin: 0 auto 50px;
-        }
-        h2 {
-            font-size: 28px;
-            font-weight: 600;
-            margin: 70px 0 25px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--gris-borde);
-        }
-        /* --- Tarjetas de Productos --- */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-        .product-card {
-            background: var(--blanco);
-            border: 1px solid var(--gris-borde);
-            border-radius: 18px;
-            padding: 30px 24px;
-            transition: all 0.3s ease;
-        }
-        .product-card:hover {
-            border-color: #bbb;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-            transform: translateY(-2px);
-        }
-        .product-badge {
-            font-size: 12px;
-            text-transform: uppercase;
-            color: var(--gris-terciario);
-            margin-bottom: 6px;
-        }
-        .product-card h3 {
-            font-size: 21px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        .product-price {
-            font-size: 17px;
-            color: var(--gris-secundario);
-            margin-bottom: 16px;
-        }
-        .product-price strong {
-            color: var(--gris-texto);
-            font-size: 19px;
-            font-weight: 600;
-        }
-        .product-features {
-            list-style: none;
-            margin-bottom: 22px;
-        }
-        .product-features li {
-            font-size: 14px;
-            color: var(--gris-secundario);
-            padding: 4px 0;
-        }
-        .product-features li::before {
-            content: "✓ ";
-            color: var(--azul);
-            font-weight: 600;
-        }
-        .btn {
-            display: block;
-            text-align: center;
-            padding: 10px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            text-decoration: none;
-            cursor: pointer;
-            border: none;
-            width: 100%;
-            margin-bottom: 10px;
-        }
-        .btn-primary {
-            background: var(--azul);
-            color: #fff;
-        }
-        .btn-primary:hover {
-            background: var(--azul-hover);
-        }
-        .btn-secondary {
-            background: var(--gris-suave);
-            color: var(--azul);
-        }
-        .btn-secondary:hover {
-            background: #e8e8ed;
-        }
-        /* --- VENTANA CON CARRUSEL --- */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.85);
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        .modal.activo {
-            display: flex;
-        }
-        .modal-contenido {
-            background: var(--blanco);
-            border-radius: 20px;
-            padding: 24px;
-            max-width: 520px;
-            width: 100%;
-            position: relative;
-        }
-        .modal-cerrar {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 28px;
-            cursor: pointer;
-            color: var(--gris-terciario);
-            background: none;
-            border: none;
-            z-index: 10;
-        }
-        .modal-cerrar:hover {
-            color: var(--gris-texto);
-        }
-        .modal-titulo {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            padding-right: 40px;
-        }
-        /* --- CARRUSEL --- */
-        .carrusel {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-        .carrusel-img {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            display: block;
-            background: var(--gris-suave);
-            padding: 60px 20px;
-            text-align: center;
-            color: var(--gris-terciario);
-        }
-        .carrusel-flecha {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(0,0,0,0.6);
-            color: white;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-        }
-        .carrusel-flecha:hover {
-            background: rgba(0,0,0,0.8);
-        }
-        .carrusel-izquierda {
-            left: 10px;
-        }
-        .carrusel-derecha {
-            right: 10px;
-        }
-        .carrusel-contador {
-            text-align: center;
-            margin-top: 12px;
-            font-size: 14px;
-            color: var(--gris-secundario);
-        }
-        .modal-texto {
-            margin-top: 12px;
-            font-size: 15px;
-            color: var(--gris-secundario);
-            text-align: center;
-        }
-        /* --- Información --- */
-        .info-block {
-            background: var(--gris-suave);
-            border-radius: 12px;
-            padding: 28px 24px;
-            margin-top: 40px;
-        }
-        .info-block h3 {
-            font-size: 17px;
-            margin-bottom: 12px;
-        }
-        .info-block p {
-            font-size: 14px;
-            color: var(--gris-secundario);
-            line-height: 1.6;
-        }
-        /* --- Preguntas Frecuentes --- */
-        .faq-container {
-            margin-top: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .faq-item {
-            border: 1px solid var(--gris-borde);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        .faq-pregunta {
-            padding: 16px 20px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--blanco);
-        }
-        .faq-pregunta:hover {
-            background: var(--gris-suave);
-        }
-        .faq-icon {
-            font-size: 12px;
-        }
-        .faq-respuesta {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-        .faq-texto {
-            padding: 0 20px 16px;
-            font-size: 15px;
-            color: var(--gris-secundario);
-        }
-        .faq-item.abierta .faq-respuesta {
-            max-height: 200px;
-        }
-        .faq-item.abierta .faq-icon {
-            transform: rotate(180deg);
-        }
-        /* --- Contacto --- */
-        .contact-section {
-            text-align: center;
-            margin-top: 70px;
-            padding-top: 40px;
-            border-top: 1px solid var(--gris-borde);
-        }
-        .contact-section h2 {
-            border: none;
-            margin-top: 0;
-        }
-        .contact-data {
-            font-size: 17px;
-            color: var(--gris-secundario);
-            margin: 12px 0;
-        }
-        .contact-data a {
-            color: var(--azul);
-            text-decoration: none;
-        }
-        .social-links {
-            display: flex;
-            gap: 18px;
-            justify-content: center;
-            margin-top: 32px;
-            flex-wrap: wrap;
-        }
-        .social-link {
-            background: var(--gris-suave);
-            color: var(--gris-texto);
-            padding: 14px 28px;
-            border-radius: 20px;
-            font-size: 16px;
-            font-weight: 500;
-            text-decoration: none;
-            border: 1px solid var(--gris-borde);
-        }
-        .social-link:hover {
-            background: #e8e8ed;
-        }
-        footer {
-            border-top: 1px solid var(--gris-borde);
-            margin-top: 60px;
-            padding: 20px;
-            text-align: center;
-            font-size: 12px;
-            color: var(--gris-terciario);
-        }
+        .nav-inner { max-width: 980px; margin: 0 auto; padding: 0 22px; height: 44px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 19px; font-weight: 600; color: var(--gris-texto); text-decoration: none; }
+        .nav-links { display: flex; gap: 24px; font-size: 12px; }
+        .nav-links a { color: var(--gris-secundario); text-decoration: none; }
+        .nav-links a:hover { color: var(--gris-texto); }
+        main { max-width: 980px; margin: 0 auto; padding: 80px 22px 60px; }
+        .brand-header { text-align: center; padding: 40px 0 30px; }
+        .brand-header p { color: var(--gris-secundario); font-size: 17px; }
+        h1 { text-align: center; font-size: clamp(32px, 6vw, 48px); font-weight: 700; margin-bottom: 12px; }
+        .subhead { text-align: center; font-size: 20px; color: var(--gris-secundario); max-width: 650px; margin: 0 auto 50px; }
+        h2 { font-size: 28px; font-weight: 600; margin: 70px 0 25px; padding-bottom: 10px; border-bottom: 1px solid var(--gris-borde); }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 30px; }
+        .product-card { background: var(--blanco); border: 1px solid var(--gris-borde); border-radius: 18px; padding: 24px; transition: all 0.3s ease; }
+        .product-card:hover { border-color: #bbb; box-shadow: 0 4px 14px rgba(0,0,0,0.08); transform: translateY(-2px); }
+        .product-img-container { width: 100%; height: 220px; background: var(--gris-suave); border-radius: 12px; margin-bottom: 16px; overflow: hidden; }
+        .product-img-container img { width: 100%; height: 100%; object-fit: cover; }
+        .product-badge { font-size: 12px; text-transform: uppercase; color: var(--gris-terciario); margin-bottom: 6px; }
+        .product-card h3 { font-size: 21px; font-weight: 600; margin-bottom: 8px; }
+        .product-price { font-size: 17px; color: var(--gris-secundario); margin-bottom: 16px; }
+        .product-price strong { color: var(--gris-texto); font-size: 19px; font-weight: 600; }
+        .product-features { list-style: none; margin-bottom: 22px; }
+        .product-features li { font-size: 14px; color: var(--gris-secundario); padding: 4px 0; }
+        .product-features li::before { content: "✓ "; color: var(--azul); font-weight: 600; }
+        .btn { display: block; text-align: center; padding: 10px 16px; border-radius: 20px; font-size: 14px; text-decoration: none; cursor: pointer; border: none; width: 100%; margin-bottom: 10px; }
+        .btn-primary { background: var(--azul); color: #fff; }
+        .btn-primary:hover { background: var(--azul-hover); }
+        .btn-secondary { background: var(--gris-suave); color: var(--azul); }
+        .btn-secondary:hover { background: #e8e8ed; }
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); align-items: center; justify-content: center; padding: 20px; }
+        .modal.activo { display: flex; }
+        .modal-contenido { background: var(--blanco); border-radius: 20px; padding: 24px; max-width: 520px; width: 100%; position: relative; }
+        .modal-cerrar { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: var(--gris-terciario); background: none; border: none; }
+        .modal-cerrar:hover { color: var(--gris-texto); }
+        .modal-titulo { font-size: 20px; font-weight: 600; margin-bottom: 20px; padding-right: 40px; }
+        .carrusel { position: relative; display: flex; align-items: center; }
+        .carrusel-img { width: 100%; height: auto; border-radius: 12px; display: block; }
+        .carrusel-flecha { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: rgba(0,0,0,0.6); color: white; border: none; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .carrusel-flecha:hover { background: rgba(0,0,0,0.8); }
+        .carrusel-izquierda { left: 10px; }
+        .carrusel-derecha { right: 10px; }
+        .carrusel-contador { text-align: center; margin-top: 12px; font-size: 14px; color: var(--gris-secundario); }
+        .info-block { background: var(--gris-suave); border-radius: 12px; padding: 28px 24px; margin-top: 40px; }
+        .info-block h3 { font-size: 17px; margin-bottom: 12px; }
+        .info-block p { font-size: 14px; color: var(--gris-secundario); line-height: 1.6; }
+        .faq-container { margin-top: 30px; display: flex; flex-direction: column; gap: 12px; }
+        .faq-item { border: 1px solid var(--gris-borde); border-radius: 12px; overflow: hidden; }
+        .faq-pregunta { padding: 16px 20px; font-size: 16px; font-weight: 500; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: var(--blanco); }
+        .faq-pregunta:hover { background: var(--gris-suave); }
+        .faq-icon { font-size: 12px; transition: transform 0.3s; }
+        .faq-respuesta { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .faq-texto { padding: 0 20px 16px; font-size: 15px; color: var(--gris-secundario); }
+        .faq-item.abierta .faq-respuesta { max-height: 200px; }
+        .faq-item.abierta .faq-icon { transform: rotate(180deg); }
+        .contact-section { text-align: center; margin-top: 70px; padding-top: 40px; border-top: 1px solid var(--gris-borde); }
+        .contact-section h2 { border: none; margin-top: 0; }
+        .contact-data { font-size: 17px; color: var(--gris-secundario); margin: 12px 0; }
+        .contact-data a { color: var(--azul); text-decoration: none; }
+        .social-links { display: flex; gap: 18px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
+        .social-link { background: var(--gris-suave); color: var(--gris-texto); padding: 14px 28px; border-radius: 20px; font-size: 16px; font-weight: 500; text-decoration: none; border: 1px solid var(--gris-borde); }
+        .social-link:hover { background: #e8e8ed; }
+        footer { border-top: 1px solid var(--gris-borde); margin-top: 60px; padding: 20px; text-align: center; font-size: 12px; color: var(--gris-terciario); }
     </style>
 </head>
 <body>
-<!-- Barra de Navegación -->
 <nav>
     <div class="nav-inner">
         <a href="#" class="logo">NEOVIX</a>
@@ -407,15 +102,19 @@
 <main id="inicio">
     <div class="brand-header">
         <h1>NEOVIX • Camisas, Playeras y Sudaderas</h1>
-        <p>Antes audífonos, ahora tu mejor versión con Calidad G5</p>
+        <p>Calidad G5 • Viste con estilo y a buen precio</p>
     </div>
-    <p class="subhead">Diseños modernos, telas seleccionadas y confección de alto nivel. Viste bien con NEOVIX.</p>
+    <p class="subhead">Telas seleccionadas, confección cuidadosa y precios que te encantan.</p>
     
     <h2 id="productos">Nuestros Productos</h2>
     <div class="product-grid">
-        <!-- 👕 Camisas -->
+
+        <!-- 👕 CAMISAS - Próximamente -->
         <div class="product-card">
             <span class="product-badge">Camisas</span>
+            <div class="product-img-container">
+                <div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--gris-terciario);">Próximamente</div>
+            </div>
             <h3>Camisa Calidad G5</h3>
             <p class="product-price"><strong>$199.00</strong> MXN</p>
             <ul class="product-features">
@@ -423,15 +122,17 @@
                 <li>Colores que no se desvanecen</li>
                 <li>Tallas S, M, L, XL y XXL</li>
                 <li>Costuras reforzadas</li>
-                <li>Estilo casual y elegante</li>
             </ul>
-            <button class="btn btn-primary" onclick="abrirCarrusel('Camisa Calidad G5', ['', '', ''])">Ver diseños</button>
+            <button class="btn btn-primary" style="opacity:0.6;cursor:not-allowed;" disabled>Próximamente</button>
             <a href="#contacto" class="btn btn-secondary">Pedir información</a>
         </div>
 
-        <!-- 👕 Playeras -->
+        <!-- 👕 PLAYERAS - Próximamente -->
         <div class="product-card">
             <span class="product-badge">Playeras</span>
+            <div class="product-img-container">
+                <div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--gris-terciario);">Próximamente</div>
+            </div>
             <h3>Playera Calidad G5</h3>
             <p class="product-price"><strong>$199.00</strong> MXN</p>
             <ul class="product-features">
@@ -439,15 +140,17 @@
                 <li>Corte cómodo y moderno</li>
                 <li>Variedad de colores</li>
                 <li>Resistente al uso diario</li>
-                <li>No se deforma</li>
             </ul>
-            <button class="btn btn-primary" onclick="abrirCarrusel('Playera Calidad G5', ['', '', ''])">Ver diseños</button>
+            <button class="btn btn-primary" style="opacity:0.6;cursor:not-allowed;" disabled>Próximamente</button>
             <a href="#contacto" class="btn btn-secondary">Pedir información</a>
         </div>
 
-        <!-- 🧥 Sudaderas -->
+        <!-- 🧥 SUDADERAS - TUS FOTOS YA FUNCIONANDO ✅ -->
         <div class="product-card">
             <span class="product-badge">Sudaderas</span>
+            <div class="product-img-container">
+                <img src="sudaderas/WhatsApp Image 2026-09-19 at 10.35.27 PM.jpeg" alt="Sudadera Calidad G5">
+            </div>
             <h3>Sudadera Calidad G5</h3>
             <p class="product-price"><strong>$299.00</strong> MXN</p>
             <ul class="product-features">
@@ -455,85 +158,65 @@
                 <li>Cuello y puños duraderos</li>
                 <li>No encoge ni se deforma</li>
                 <li>Acabados premium</li>
-                <li>Ideal para diario</li>
             </ul>
-            <button class="btn btn-primary" onclick="abrirCarrusel('Sudadera Calidad G5', ['', '', ''])">Ver diseños</button>
+            <button class="btn btn-primary" onclick="abrirCarrusel('Sudadera Calidad G5', [
+                'sudaderas/WhatsApp Image 2026-09-19 at 10.35.27 PM.jpeg',
+                'sudaderas/WhatsApp Image 2026-09-19 at 10.35.33 PM.jpeg'
+            ])">Ver diseños</button>
             <a href="#contacto" class="btn btn-secondary">Pedir información</a>
         </div>
     </div>
 
-    <!-- VENTANA CON CARRUSEL -->
+    <!-- VENTANA CON FOTOS -->
     <div id="miModal" class="modal" onclick="cerrarModal(event)">
         <div class="modal-contenido" onclick="event.stopPropagation()">
             <button class="modal-cerrar" onclick="cerrarModal(event)">&times;</button>
             <h3 id="modalNombre" class="modal-titulo"></h3>
-            
             <div class="carrusel">
                 <button class="carrusel-flecha carrusel-izquierda" onclick="anteriorImagen()">&#8249;</button>
                 <img id="carruselImagen" class="carrusel-img" alt="Imagen del producto">
                 <button class="carrusel-flecha carrusel-derecha" onclick="siguienteImagen()">&#8250;</button>
             </div>
-            
             <div class="carrusel-contador">
-                <span id="imagenActual">1</span> de <span id="imagenTotal">3</span>
+                <span id="imagenActual">1</span> de <span id="imagenTotal">2</span>
             </div>
-            
-            <p class="modal-texto">Pronto tendremos aquí todas las fotos. Escríbenos para ver el catálogo completo.</p>
+            <p style="margin-top:12px; font-size:15px; color:var(--gris-secundario); text-align:center;">Estos son nuestros modelos. Escríbenos para pedir el tuyo.</p>
         </div>
     </div>
 
-    <!-- Calidad y Compromiso -->
     <div class="info-block" id="calidad">
         <h3>Compromiso con la Calidad G5</h3>
-        <p>En NEOVIX evolucionamos para ofrecerte lo mejor. Ahora nos dedicamos a crear ropa con los más altos estándares: materiales seleccionados, confección cuidadosa y diseños pensados para ti. Calidad G5 significa durabilidad, comodidad y estilo en cada prenda. Tu satisfacción es nuestra prioridad.</p>
+        <p>Materiales seleccionados, confección cuidadosa y diseños pensados para ti. Calidad G5 significa durabilidad, comodidad y estilo en cada prenda.</p>
     </div>
 
-    <!-- Preguntas Frecuentes -->
     <h2 id="faq">Preguntas Frecuentes</h2>
     <div class="faq-container">
         <div class="faq-item">
-            <div class="faq-pregunta" onclick="toggleFaq(this.parentElement)">
-                ¿Qué significa "Calidad G5"? <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-respuesta">
-                <div class="faq-texto">Es nuestro estándar de excelencia: materiales cuidadosamente elegidos, costuras firmes, colores que duran y prendas que se mantienen como nuevas.</div>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-pregunta" onclick="toggleFaq(this.parentElement)">
-                ¿Tienen todas las tallas disponibles? <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-respuesta">
-                <div class="faq-texto">Sí, manejamos desde S hasta XXL. Contáctanos y te confirmamos la disponibilidad exacta.</div>
-            </div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-pregunta" onclick="toggleFaq(this.parentElement)">
+            <div class="faq-pregunta" onclick="this.parentElement.classList.toggle('abierta')">
                 ¿Cómo hago mi pedido? <span class="faq-icon">▼</span>
             </div>
             <div class="faq-respuesta">
-                <div class="faq-texto">Escríbenos por WhatsApp o Instagram, te compartimos el catálogo completo, eliges lo que quieres y confirmamos tu envío.</div>
+                <p class="faq-texto">Escríbenos por WhatsApp o Instagram, te compartimos el catálogo completo, eliges lo que quieres y confirmamos tu envío.</p>
             </div>
         </div>
         <div class="faq-item">
-            <div class="faq-pregunta" onclick="toggleFaq(this.parentElement)">
-                ¿Cuánto tardan en llegar? <span class="faq-icon">▼</span>
+            <div class="faq-pregunta" onclick="this.parentElement.classList.toggle('abierta')">
+                ¿Tienen todas las tallas? <span class="faq-icon">▼</span>
             </div>
             <div class="faq-respuesta">
-                <div class="faq-texto">Los envíos dentro de México se entregan en 3 a 6 días hábiles con número de seguimiento incluido.</div>
+                <p class="faq-texto">Sí, manejamos desde S hasta XXL. Contáctanos y te confirmamos disponibilidad.</p>
             </div>
         </div>
         <div class="faq-item">
-            <div class="faq-pregunta" onclick="toggleFaq(this.parentElement)">
-                ¿Aceptan devoluciones? <span class="faq-icon">▼</span>
+            <div class="faq-pregunta" onclick="this.parentElement.classList.toggle('abierta')">
+                ¿Cuánto tarda en llegar? <span class="faq-icon">▼</span>
             </div>
             <div class="faq-respuesta">
-                <div class="faq-texto">Si la prenda presenta algún defecto de fábrica, sí. Queremos que quedes satisfecho o satisfecha con tu compra.</div>
+                <p class="faq-texto">Envíos a toda México en 3 a 6 días hábiles con número de seguimiento incluido.</p>
             </div>
         </div>
     </div>
 
-    <!-- Contacto -->
     <section class="contact-section" id="contacto">
         <h2>¿Listo para vestir NEOVIX?</h2>
         <div class="contact-data">
@@ -543,63 +226,49 @@
         </div>
         <div class="social-links">
             <a href="https://wa.me/521XXXXXXXXXX" target="_blank" class="social-link">WhatsApp</a>
-            <a href="https://www.instagram.com/neovix.store/" target="_blank" class="social-link">Instagram</a>
-            <a href="https://www.facebook.com/share/1TzuZk1uhR/?mibextid=wwXIfr" target="_blank" class="social-link">Facebook</a>
+            <a href="https://www.instagram.com/neovix" target="_blank" class="social-link">Instagram</a>
         </div>
     </section>
+
+    <footer>
+        <p>NEOVIX © 2026 • Calidad G5 • Todos los derechos reservados</p>
+    </footer>
 </main>
-<footer>
-    © 2026 NEOVIX • Camisas $199 • Playeras $199 • Sudaderas $299 • Calidad G5
-</footer>
+
 <script>
-    let imagenesActuales = [];
-    let indiceActual = 0;
-    
-    function abrirCarrusel(nombre, listaImagenes) {
-        const modal = document.getElementById('miModal');
-        document.getElementById('modalNombre').textContent = nombre;
-        imagenesActuales = listaImagenes;
-        indiceActual = 0;
-        document.getElementById('imagenTotal').textContent = listaImagenes.length || 3;
-        mostrarImagenActual();
-        modal.classList.add('activo');
-        document.body.style.overflow = 'hidden';
+let fotosCarrusel = [];
+let indiceActual = 0;
+
+function abrirCarrusel(nombre, imagenes) {
+    fotosCarrusel = imagenes;
+    indiceActual = 0;
+    document.getElementById('modalNombre').textContent = nombre;
+    document.getElementById('miModal').classList.add('activo');
+    mostrarImagen();
+}
+
+function cerrarModal(e) {
+    if (e.target === document.getElementById('miModal')) {
+        document.getElementById('miModal').classList.remove('activo');
     }
-    
-    function mostrarImagenActual() {
-        const imgElement = document.getElementById('carruselImagen');
-        if (imagenesActuales[indiceActual]) {
-            imgElement.src = imagenesActuales[indiceActual];
-            imgElement.alt = 'Imagen ' + (indiceActual + 1);
-        } else {
-            imgElement.src = '';
-            imgElement.alt = 'Foto próximamente';
-            imgElement.placeholder = '📷 Foto disponible pronto';
-        }
-        document.getElementById('imagenActual').textContent = indiceActual + 1;
-    }
-    
-    function siguienteImagen() {
-        indiceActual = (indiceActual + 1) % imagenesActuales.length;
-        mostrarImagenActual();
-    }
-    
-    function anteriorImagen() {
-        indiceActual = (indiceActual - 1 + imagenesActuales.length) % imagenesActuales.length;
-        mostrarImagenActual();
-    }
-    
-    function cerrarModal(event) {
-        const modal = document.getElementById('miModal');
-        if (event.target === modal || event.target.classList.contains('modal-cerrar')) {
-            modal.classList.remove('activo');
-            document.body.style.overflow = 'auto';
-        }
-    }
-    
-    function toggleFaq(elemento) {
-        elemento.classList.toggle('abierta');
-    }
+}
+
+function mostrarImagen() {
+    document.getElementById('carruselImagen').src = fotosCarrusel[indiceActual];
+    document.getElementById('imagenActual').textContent = indiceActual + 1;
+    document.getElementById('imagenTotal').textContent = fotosCarrusel.length;
+}
+
+function anteriorImagen() {
+    indiceActual = (indiceActual - 1 + fotosCarrusel.length) % fotosCarrusel.length;
+    mostrarImagen();
+}
+
+function siguienteImagen() {
+    indiceActual = (indiceActual + 1) % fotosCarrusel.length;
+    mostrarImagen();
+}
 </script>
+
 </body>
 </html>
